@@ -1,0 +1,56 @@
+{
+  "created": "2026-07-29",
+  "package": "RETECO curated official-data pilot",
+  "purpose": "A compact feasibility/evaluation-format demonstration copied from the official TEMPO and RECOR releases.",
+  "sources": {
+    "recor": {
+      "dataset": "RECOR-Benchmark/RECOR",
+      "paper": "https://arxiv.org/abs/2601.05461",
+      "revision": "d9faa639019dcfa1a1fea2aece55ebcba3083c00",
+      "url": "https://huggingface.co/datasets/RECOR-Benchmark/RECOR"
+    },
+    "tempo": {
+      "dataset": "tempo26/Tempo",
+      "paper": "https://arxiv.org/abs/2601.09523",
+      "revision": "f9df06c05688225e37701974d23c8e3c5d4efaf6",
+      "url": "https://huggingface.co/datasets/tempo26/Tempo"
+    }
+  },
+  "track1_tempo": {
+    "documents": 26,
+    "domains": [
+      "bitcoin",
+      "economics",
+      "genealogy",
+      "history",
+      "hsm"
+    ],
+    "examples": 5,
+    "positive_qrels": 26,
+    "selected_ids": [
+      "122291_22",
+      "59375_163",
+      "9808_315",
+      "79305_12",
+      "18988_650"
+    ]
+  },
+  "track2_recor": {
+    "conversations": 4,
+    "documents": 15,
+    "domains": [
+      "law",
+      "Drones",
+      "biology",
+      "earth_science"
+    ],
+    "positive_qrels": 32,
+    "selected_ids": [
+      "ex_111149",
+      "ex_3025",
+      "2",
+      "5"
+    ],
+    "turns": 13
+  }
+}

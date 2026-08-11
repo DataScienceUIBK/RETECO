@@ -35,3 +35,18 @@ if (!reducedMotion && 'IntersectionObserver' in window) {
 document.querySelectorAll('[data-year]').forEach((item) => {
   item.textContent = new Date().getFullYear();
 });
+
+document.querySelectorAll('[data-copy-target]').forEach((button) => {
+  button.addEventListener('click', async () => {
+    const target = document.getElementById(button.dataset.copyTarget);
+    if (!target) return;
+    const original = button.textContent;
+    try {
+      await navigator.clipboard.writeText(target.textContent.trim());
+      button.textContent = 'Copied';
+    } catch (_) {
+      button.textContent = 'Select text to copy';
+    }
+    window.setTimeout(() => { button.textContent = original; }, 1800);
+  });
+});
