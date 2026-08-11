@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">RETECO mark</title>
+  <desc id="desc">A temporal path and conversational nodes forming the letter R.</desc>
+  <rect width="64" height="64" rx="15" fill="#5dd9ff"/>
+  <path d="M18 48V16h14.5C41 16 46 20.2 46 27c0 5-2.8 8.4-7.6 10l9.1 11H38L30.7 38H27v10h-9Z" fill="#07101d"/>
+  <path d="M27 23v8h5.1c3.2 0 4.9-1.4 4.9-4s-1.7-4-4.9-4H27Z" fill="#5dd9ff"/>
+  <circle cx="18" cy="16" r="3.5" fill="#a88cff"/>
+  <circle cx="47.5" cy="48" r="3.5" fill="#a88cff"/>
+</svg>

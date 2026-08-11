@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Definitions and inputs/outputs for all RETECO SemEval-2027 tracks."><meta name="theme-color" content="#07101d">
+  <title>Task — RETECO SemEval-2027</title>
+  <link rel="icon" href="assets/brand/reteco-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/css/site.css"><script src="assets/js/site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="shell nav-wrap"><a class="brand" href="index.html"><img class="brand-mark" src="assets/brand/reteco-mark.svg" alt=""><span><span class="brand-name">RETECO</span><br><span class="brand-event">SemEval 2027</span></span></a><button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button><nav class="nav-links" aria-label="Primary navigation"><a aria-current="page" href="task.html">Task</a><a href="data.html">Data</a><a href="evaluation.html">Evaluation</a><a href="participate.html">Participate</a><a href="timeline.html">Timeline</a><a class="nav-cta" href="https://github.com/DataScienceUIBK/RETECO" target="_blank" rel="noreferrer">GitHub ↗</a></nav></div></header>
+<main id="main">
+  <header class="page-hero"><div class="shell"><div class="breadcrumbs"><a href="index.html">Home</a><span>/</span>Task</div><p class="eyebrow">Task definition</p><h1>Retrieval with the context left intact.</h1><p class="lede">RETECO unifies temporal grounding and conversational reasoning under a common ranked-retrieval interface, then extends that interface to grounded generation.</p></div></header>
+  <section class="section"><div class="shell toc-layout">
+    <aside class="toc"><strong>On this page</strong><a href="#overview">Overview</a><a href="#track-1">Track 1 · TEMPO</a><a href="#track-2">Track 2 · RECOR</a><a href="#hidden-test">Hidden test</a><a href="#participation">What to enter</a></aside>
+    <div class="prose">
+      <section id="overview"><p class="eyebrow">Overview</p><h2>Why reasoning-oriented retrieval?</h2><p>Most retrieval benchmarks reward topical similarity. Real information needs are less forgiving: a document may discuss the right topic but the wrong period, or contain the right vocabulary without resolving what “that” means in the current conversation.</p><p>RETECO evaluates relevance conditioned on these missing dimensions. The tracks share the same core question—can a system rank the passages that truly support the information need?—while isolating two kinds of reasoning.</p><div class="callout"><strong>Official retrieval output</strong>For each query or target conversation turn, systems submit an ordered list of document identifiers. Higher-ranked relevant documents receive more credit through nDCG@10.</div></section>
+
+      <section id="track-1"><p class="eyebrow">Track 01 · TEMPO</p><h2>Temporal Grounded Retrieval</h2><p>A system receives a temporally grounded query and a domain corpus. It must retrieve passages that are topically relevant <em>and</em> aligned with the time periods required by the query. A passage containing an unrelated date does not count as temporally aligned.</p>
+        <h3>Sub-track 1a — Temporal Retrieval</h3><div class="io-grid"><div class="io-card"><small>Input</small><h3>Query + corpus</h3><p>A complex temporal information need and the corresponding domain document collection.</p></div><div class="io-card"><small>Output</small><h3>Ranked documents</h3><p>An ordered list of document identifiers for the complete query.</p></div></div>
+        <h3>Sub-track 1b — Step-wise Temporal Retrieval</h3><div class="io-grid"><div class="io-card"><small>Input</small><h3>Decomposed steps + corpus</h3><p>The temporal query is represented through reasoning steps, each targeting a necessary part or period.</p></div><div class="io-card"><small>Output</small><h3>Rankings by step</h3><p>An ordered document list for each intermediate retrieval step.</p></div></div>
+        <div class="callout"><strong>What makes Track 1 difficult?</strong>The public TEMPO pilot covers ten temporal reasoning classes, including event analysis/localization and time-period contextualization. Strong systems still fail to cover all required periods for many queries.</div>
+        <div class="code-block"><span class="code-label">Public pilot record · simplified</span><code>{
+  "id": "122291_22",
+  "query": "Why was there a jump in transactions per block in 2023?",
+  "gold_ids": ["bitcoin/25785deb_4434.txt", "…"]
+}</code></div>
+      </section>
+
+      <section id="track-2"><p class="eyebrow">Track 02 · RECOR</p><h2>Reasoning-Intensive Conversational Retrieval</h2><p>A system receives the current user turn together with the preceding conversation. It must resolve discourse dependencies—such as coreference and ellipsis—and identify passages whose relevance may require a multi-step conceptual link rather than surface overlap.</p>
+        <h3>Sub-track 2a — Conversational Retrieval</h3><div class="io-grid"><div class="io-card"><small>Input</small><h3>Conversation + corpus</h3><p>The dialogue history, current target turn, and corresponding domain collection.</p></div><div class="io-card"><small>Output</small><h3>Ranked passages</h3><p>An ordered list of supporting document identifiers for the current turn.</p></div></div>
+        <h3>Sub-track 2b — Generation with Gold Passages</h3><div class="io-grid"><div class="io-card"><small>Input</small><h3>Conversation + gold evidence</h3><p>Organizer-provided supporting passages isolate answer generation from retrieval quality.</p></div><div class="io-card"><small>Output</small><h3>Grounded response</h3><p>A direct, coherent answer faithful to the supplied passages and dialogue context.</p></div></div>
+        <h3>Sub-track 2c — Full Conversational RAG</h3><div class="io-grid"><div class="io-card"><small>Input</small><h3>Conversation + corpus</h3><p>The complete end-to-end setting without gold passages supplied to the system.</p></div><div class="io-card"><small>Output</small><h3>Top-5 + response</h3><p>Up to five retrieved passage identifiers and a generated, evidence-grounded answer.</p></div></div>
+        <div class="callout callout--violet"><strong>What makes Track 2 difficult?</strong>Later turns are rarely standalone. The RECOR pilot shows that adding conversation history and explicit reasoning can roughly double retrieval effectiveness, exposing how much context is lost by raw-query retrieval.</div>
+        <div class="code-block"><span class="code-label">Public pilot turn · simplified</span><code>{
+  "turn_id": 2,
+  "query": "Wait, did any works actually get their copyright back?",
+  "conversation_history": "Q: … A: …",
+  "gold_doc_ids": ["law_ex_111149_doc_1", "…"]
+}</code></div>
+      </section>
+
+      <section id="hidden-test"><p class="eyebrow">Evaluation data</p><h2>A genuinely held-out test.</h2><p>The public TEMPO and RECOR releases serve as the foundation for training and development. SemEval evaluation uses a separate, never-publicly-released test set drawn from unseen source material.</p><ul><li>Approximately 350 Track 1 test queries, stratified across all 13 TEMPO domains.</li><li>Approximately 200 Track 2 target turns, stratified across all 11 RECOR domains.</li><li>Every item is manually re-verified; at least 25% receive double annotation and organizer adjudication.</li><li>Gold labels remain withheld throughout the evaluation phase.</li></ul><div class="callout callout--amber"><strong>Contamination protection</strong>Participants must not attempt to reconstruct, infer, or manually annotate hidden gold labels. Detailed competition rules will accompany the evaluation release.</div></section>
+
+      <section id="participation"><p class="eyebrow">Participation scope</p><h2>Enter one sub-track or connect the full pipeline.</h2><p>Teams may participate in any subset of the five sub-tracks. The provided corpus defines the official retrieval collection. Open-source models, proprietary models, and external model APIs are permitted when their use is clearly disclosed in the system description, subject to the final competition rules.</p><div class="button-row"><a class="button" href="participate.html">Participation guide →</a><a class="button button--paper" href="evaluation.html">How scoring works</a></div></section>
+    </div>
+  </div></section>
+  <section class="cta-band"><div class="shell"><h2>Ready to work with the data?</h2><a class="button" href="data.html">Explore datasets →</a></div></section>
+</main>
+<footer class="site-footer"><div class="shell"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="index.html"><img class="brand-mark" src="assets/brand/reteco-mark.svg" alt=""><span class="brand-name">RETECO</span></a><p>A SemEval-2027 shared task advancing reasoning-oriented retrieval across temporal and conversational contexts.</p></div><div class="footer-col"><strong>Task</strong><a href="task.html">Tracks</a><a href="data.html">Data</a><a href="evaluation.html">Evaluation</a></div><div class="footer-col"><strong>Participate</strong><a href="participate.html">Get started</a><a href="timeline.html">Timeline</a><a href="participate.html#faq">FAQ</a></div><div class="footer-col"><strong>Research</strong><a href="https://github.com/tempo-bench/Tempo">TEMPO ↗</a><a href="https://github.com/RECOR-Benchmark/RECOR">RECOR ↗</a><a href="https://semeval.github.io/SemEval2027/">SemEval ↗</a></div></div><div class="footer-bottom"><span>© <span data-year>2026</span> RETECO organizers.</span><span>Hosted by DataScienceUIBK · University of Innsbruck</span></div></div></footer>
+</body></html>
