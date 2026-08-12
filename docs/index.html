@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="RETECO is SemEval-2027 Task 1 on reasoning-oriented retrieval across temporal and conversational contexts.">
-  <meta name="theme-color" content="#f6f7f4">
+  <meta name="theme-color" content="#ffffff">
   <meta property="og:title" content="RETECO — SemEval-2027 Task 1">
   <meta property="og:description" content="Reasoning-oriented retrieval across time and conversation.">
   <meta property="og:type" content="website">
@@ -20,71 +20,117 @@
     <div class="shell nav-wrap">
       <a class="brand" href="index.html" aria-label="RETECO home"><img class="brand-mark" src="assets/brand/reteco-mark.svg" alt=""><span><span class="brand-name">RETECO</span><br><span class="brand-event">SemEval 2027</span></span></a>
       <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
-      <nav class="nav-links" aria-label="Primary navigation"><a href="task.html">Task</a><a href="data.html">Data</a><a href="evaluation.html">Evaluation</a><a href="papers.html">Papers</a><a href="participate.html">Participate</a><a href="timeline.html">Timeline</a><a class="nav-cta" href="https://github.com/DataScienceUIBK/RETECO" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
+      <nav class="nav-links" aria-label="Primary navigation"><a aria-current="page" href="index.html">Overview</a><a href="task.html">Task</a><a href="data.html">Data</a><a href="evaluation.html">Evaluation</a><a href="papers.html">Papers</a><a href="participate.html">Participate</a><a href="timeline.html">Timeline</a><a class="nav-cta" href="https://github.com/DataScienceUIBK/RETECO" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
     </div>
   </header>
 
-  <main id="main">
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">SemEval-2027 · Task 1 · Accepted shared task</p>
-          <h1>RETECO <span>Reasoning-Oriented Retrieval</span></h1>
-          <p class="hero-copy">A shared task for retrieval and RAG systems that must reason over temporal constraints, conversational context, and multi-step evidence.</p>
-          <div class="hero-actions"><a class="button button--primary" href="task.html">Explore the task <span aria-hidden="true">→</span></a><a class="button button--paper" href="assets/papers/RETECO_SemEval_2027_Proposal.pdf">Read the proposal</a></div>
-        </div>
-        <div class="hero-panel" aria-label="Visual summary of temporal and conversational retrieval">
-          <div class="signal-map"><span class="signal-label signal-label--one">01 / temporal signal</span><div class="time-axis"></div><span class="time-node"></span><span class="time-node"></span><span class="time-node"></span><div class="conversation"><span class="signal-label signal-label--two">02 / discourse signal</span><div class="bubble bubble--q">How did the policy change after the agreement?</div><div class="bubble bubble--a">The first revision introduced…</div><div class="bubble bubble--q2">And what happened next?</div><div class="reason-link"></div></div></div>
-          <div class="panel-badge">R²</div>
-        </div>
-      </div>
-    </section>
+  <main id="main" class="academic-home">
+    <header class="academic-intro">
+      <div class="shell academic-intro-inner">
+        <p class="task-kicker">SemEval-2027 · Task 1</p>
+        <h1>RETECO: Reasoning-Oriented Retrieval</h1>
+        <p class="academic-summary">A shared task on temporally grounded retrieval and reasoning-intensive conversational retrieval.</p>
+        <p class="status-note"><strong>Status:</strong> Accepted as a SemEval-2027 shared task.</p>
 
-    <section class="organizer-band" aria-labelledby="organizers-title">
-      <div class="shell">
-        <div class="organizer-band-head"><p class="eyebrow">Organizing team</p><h2 id="organizers-title">Organizers and affiliations</h2></div>
-        <div class="organizer-row">
-          <article class="organizer-card"><h3>Abdelrahman Abdallah</h3><p>University of Innsbruck</p><span>Co-organizer</span></article>
-          <article class="organizer-card"><h3>Mohammed Ali</h3><p>University of Innsbruck</p><span>Co-organizer</span></article>
-          <article class="organizer-card"><h3>Muhammad Abdul-Mageed</h3><p>University of British Columbia</p><span>Co-organizer</span></article>
-          <article class="organizer-card"><h3>Kevin Duh</h3><p>Johns Hopkins University</p><span>Co-organizer</span></article>
-          <article class="organizer-card"><h3>Adam Jatowt</h3><p>University of Innsbruck</p><span>Co-organizer</span></article>
-        </div>
+        <section class="intro-organizers" aria-labelledby="intro-organizers-title">
+          <h2 id="intro-organizers-title">Organizers</h2>
+          <ul>
+            <li><strong>Abdelrahman Abdallah</strong><span>University of Innsbruck</span></li>
+            <li><strong>Mohammed Ali</strong><span>University of Innsbruck</span></li>
+            <li><strong>Muhammad Abdul-Mageed</strong><span>University of British Columbia</span></li>
+            <li><strong>Kevin Duh</strong><span>Johns Hopkins University</span></li>
+            <li><strong>Adam Jatowt</strong><span>University of Innsbruck</span></li>
+          </ul>
+          <p class="organizer-role">All listed team members are co-organizers.</p>
+        </section>
       </div>
-    </section>
+    </header>
 
-    <section class="section section--compact">
-      <div class="shell">
-        <div class="section-head reveal"><div><p class="eyebrow">The task</p><h2>Retrieval that understands context.</h2><p class="lede">RETECO moves beyond topical similarity by testing when evidence is valid, how information changes, and what a conversation has already established.</p></div><a class="button button--paper" href="task.html">Full task definitions →</a></div>
-        <div class="track-grid">
-          <article class="track-card track-card--soft track-card--time reveal"><span class="track-number">Track 01 · TEMPO</span><h3>Temporal grounded retrieval</h3><p>Retrieve evidence aligned with the query’s required time periods and expose the intermediate retrieval plan.</p><div class="pill-row"><span class="pill">1a Retrieval</span><span class="pill">1b Step-wise</span><span class="pill">13 domains</span></div></article>
-          <article class="track-card track-card--soft track-card--talk reveal"><span class="track-number">Track 02 · RECOR</span><h3>Conversational reasoning retrieval</h3><p>Resolve prior turns, ellipsis, and implicit links to retrieve supporting evidence and generate grounded responses.</p><div class="pill-row"><span class="pill">2a Retrieval</span><span class="pill">2b Gold RAG</span><span class="pill">2c Full RAG</span><span class="pill">11 domains</span></div></article>
-        </div>
-      </div>
-    </section>
+    <div class="shell academic-layout">
+      <article class="academic-content">
+        <section id="overview">
+          <h2>Overview</h2>
+          <p>Retrieval systems are commonly evaluated by topical relevance. RETECO instead focuses on cases where a system must reason about <strong>when information is valid</strong>, <strong>how events or facts change over time</strong>, and <strong>what has already been established in a conversation</strong>.</p>
+          <p>The task brings together two complementary settings grounded in the existing TEMPO and RECOR benchmarks. Participants may enter an individual sub-track or work across retrieval and grounded generation.</p>
+        </section>
 
-    <section class="section section--white section--rule">
-      <div class="shell">
-        <div class="section-head reveal"><div><p class="eyebrow">Task resources</p><h2>Everything needed to participate.</h2></div></div>
-        <div class="resource-grid">
-          <a class="resource-card reveal" href="data.html"><code>DATA</code><h3>Corpora and domains</h3><p>TEMPO and RECOR formats, statistics, domains, and access links.</p><span>Open data guide →</span></a>
-          <a class="resource-card reveal" href="samples.html"><code>SAMPLES</code><h3>Inspect examples</h3><p>Curated, downloadable records from both public pilot benchmarks.</p><span>View samples →</span></a>
-          <a class="resource-card reveal" href="evaluation.html"><code>EVAL</code><h3>Evaluation plan</h3><p>Official leaderboard metrics, diagnostics, and generation validation.</p><span>Read evaluation →</span></a>
-          <a class="resource-card reveal" href="papers.html"><code>RESEARCH</code><h3>Papers and citations</h3><p>The task proposal, TEMPO and RECOR papers, and BibTeX records.</p><span>Open papers →</span></a>
-        </div>
-      </div>
-    </section>
+        <section id="tracks">
+          <h2>Task description</h2>
+          <h3>Track 1: Temporal grounded retrieval (TEMPO)</h3>
+          <p>Systems retrieve passages that are topically relevant and temporally aligned with a complex query. The track covers 13 domains.</p>
+          <ul>
+            <li><strong>Sub-track 1a — Temporal retrieval:</strong> rank evidence for the complete query.</li>
+            <li><strong>Sub-track 1b — Step-wise temporal retrieval:</strong> retrieve evidence for decomposed reasoning steps.</li>
+          </ul>
 
-    <section class="section section--compact schedule-strip">
-      <div class="shell schedule-grid">
-        <div><p class="eyebrow">Schedule</p><h2>SemEval-wide milestones</h2><p class="lede">Training data: 1 September 2026. The SemEval evaluation window opens 10 January 2027; RETECO’s exact closing date will be announced after confirmation and will be no later than 31 January.</p></div>
-        <div class="schedule-note"><strong>Dates are centrally governed</strong><p>RETECO-specific platform dates remain TBA. The official SemEval calendar is the authority.</p><div class="button-row"><a class="button button--paper" href="timeline.html">Schedule notes →</a><a class="button button--paper" href="https://semeval.github.io/SemEval2027/" target="_blank" rel="noreferrer">Official calendar ↗</a></div></div>
-      </div>
-    </section>
+          <h3>Track 2: Conversational reasoning retrieval (RECOR)</h3>
+          <p>Systems use conversation history and discourse dependencies to retrieve reasoning-dependent evidence and, in the generation settings, produce a grounded response. The track covers 11 domains.</p>
+          <ul>
+            <li><strong>Sub-track 2a — Conversational retrieval:</strong> rank supporting passages for the current turn.</li>
+            <li><strong>Sub-track 2b — Gold-passage generation:</strong> generate a response from organizer-provided evidence.</li>
+            <li><strong>Sub-track 2c — Full conversational RAG:</strong> retrieve up to five passages and generate a faithful response.</li>
+          </ul>
+          <p><a href="task.html">Read the complete task definitions and input/output formats →</a></p>
+        </section>
 
-    <section class="cta-band"><div class="shell"><h2>Prepare for reasoning-oriented retrieval.</h2><a class="button" href="participate.html">Participation guide →</a></div></section>
+        <section id="data-evaluation">
+          <h2>Data and evaluation</h2>
+          <p>Public pilot data are available from <a href="https://github.com/tempo-bench/Tempo">TEMPO</a> and <a href="https://github.com/RECOR-Benchmark/RECOR">RECOR</a>. RETECO will use a separate held-out test set for the SemEval evaluation phase.</p>
+          <p><strong>nDCG@10</strong> is the official retrieval leaderboard metric. Track-specific diagnostics report temporal coverage, temporal precision, conversation-turn depth, domain variation, and grounded generation quality.</p>
+          <ul class="plain-link-list">
+            <li><a href="data.html">Corpus statistics, domains, formats, and baselines</a></li>
+            <li><a href="samples.html">Inspectable sample data for both tracks</a></li>
+            <li><a href="evaluation.html">Complete evaluation plan</a></li>
+          </ul>
+        </section>
+
+        <section id="participation">
+          <h2>Participation</h2>
+          <p>Registration, the official evaluation platform, submission limits, and contact channels will be announced here when confirmed. Participants may use the public pilot repositories to inspect the data formats and reproduce baseline systems in the meantime.</p>
+          <p><a href="participate.html">Read the participation and reproducibility guide →</a></p>
+        </section>
+
+        <section id="citation">
+          <h2>Papers and proposal</h2>
+          <p>RETECO is based on the TEMPO and RECOR benchmarks. The revised task proposal, paper links, and ready-to-copy BibTeX records are available on the <a href="papers.html">papers and citations page</a>.</p>
+        </section>
+      </article>
+
+      <aside class="academic-sidebar" aria-label="Task information">
+        <section>
+          <h2>Important dates</h2>
+          <dl class="date-list">
+            <div><dt>Training data</dt><dd><time datetime="2026-09-01">1 Sep 2026</time></dd></div>
+            <div><dt>Evaluation opens</dt><dd><time datetime="2027-01-10">10 Jan 2027</time></dd></div>
+            <div><dt>RETECO closes</dt><dd>To be announced</dd></div>
+          </dl>
+          <p class="sidebar-note">The exact RETECO closing date will be no later than 31 January 2027. See the <a href="timeline.html">schedule notes</a> and <a href="https://semeval.github.io/SemEval2027/">official SemEval calendar</a>.</p>
+        </section>
+
+        <section>
+          <h2>Quick links</h2>
+          <ul class="sidebar-links">
+            <li><a href="assets/papers/RETECO_SemEval_2027_Proposal.pdf">Task proposal (PDF)</a></li>
+            <li><a href="samples.html">Sample data</a></li>
+            <li><a href="data.html">Data and baselines</a></li>
+            <li><a href="evaluation.html">Evaluation plan</a></li>
+            <li><a href="https://github.com/DataScienceUIBK/RETECO">GitHub repository</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Updates</h2>
+          <p><time datetime="2026-08-11">11 August 2026</time><br>RETECO was accepted as a SemEval-2027 shared task.</p>
+        </section>
+
+        <section>
+          <h2>Contact</h2>
+          <p>Contact details and the participant mailing list will be posted once the official channels are confirmed.</p>
+        </section>
+      </aside>
+    </div>
   </main>
 
-  <footer class="site-footer"><div class="shell"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="index.html"><img class="brand-mark" src="assets/brand/reteco-mark.svg" alt=""><span class="brand-name">RETECO</span></a><p>SemEval-2027 Task 1 on reasoning-oriented retrieval across temporal and conversational contexts.</p></div><div class="footer-col"><strong>Task</strong><a href="task.html">Tracks</a><a href="data.html">Data</a><a href="evaluation.html">Evaluation</a></div><div class="footer-col"><strong>Participate</strong><a href="participate.html">Get started</a><a href="timeline.html">Timeline</a><a href="samples.html">Samples</a></div><div class="footer-col"><strong>Research</strong><a href="papers.html">Papers & citations</a><a href="https://github.com/tempo-bench/Tempo">TEMPO ↗</a><a href="https://github.com/RECOR-Benchmark/RECOR">RECOR ↗</a></div></div><div class="footer-bottom"><span>© <span data-year>2026</span> RETECO organizers.</span><span>Hosted by DataScienceUIBK · University of Innsbruck</span></div></div></footer>
+  <footer class="academic-footer"><div class="shell"><p><strong>RETECO · SemEval-2027 Task 1</strong></p><p>Organized by researchers at the University of Innsbruck, the University of British Columbia, and Johns Hopkins University.</p><p><a href="https://github.com/DataScienceUIBK/RETECO">GitHub</a> · <a href="https://semeval.github.io/SemEval2027/">SemEval-2027</a></p></div></footer>
 </body>
 </html>
