@@ -50,3 +50,18 @@ document.querySelectorAll('[data-copy-target]').forEach((button) => {
     window.setTimeout(() => { button.textContent = original; }, 1800);
   });
 });
+
+// Load the visitor counter on every page without rendering its map widget.
+if (!document.getElementById('mapmyvisitors')) {
+  const visitorCounter = document.createElement('div');
+  visitorCounter.hidden = true;
+  visitorCounter.setAttribute('aria-hidden', 'true');
+
+  const visitorScript = document.createElement('script');
+  visitorScript.type = 'text/javascript';
+  visitorScript.id = 'mapmyvisitors';
+  visitorScript.src = '//mapmyvisitors.com/map.js?d=Eqk94B7gSSYT-MjlvlBM58yL8NiiHN5avYHSIrHftqY&cl=ffffff&w=a';
+
+  visitorCounter.appendChild(visitorScript);
+  document.body.appendChild(visitorCounter);
+}
