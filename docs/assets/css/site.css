@@ -457,6 +457,54 @@ p { margin-top: 0; }
 .academic-footer p { margin: 5px 0; color: #5c6a79; font-size: .79rem; }
 .academic-footer strong { color: #213b52; }
 
+/* Academic documentation pages */
+.page-hero .shell { max-width: var(--content); }
+.page-hero .breadcrumbs { margin-bottom: 25px; }
+.page-hero .eyebrow { margin-bottom: 10px; color: #087397; font-family: var(--font-sans); font-size: .92rem; letter-spacing: .02em; text-transform: none; }
+.page-hero .eyebrow::before { display: none; }
+.page-hero h1 { max-width: 860px; margin-bottom: 13px; font-size: clamp(2.35rem, 4.3vw, 3.7rem); letter-spacing: -.03em; }
+.page-hero .lede { max-width: 820px; margin-bottom: 0; font-size: 1.1rem; line-height: 1.65; }
+.toc-layout { grid-template-columns: 190px minmax(0, 800px); gap: 65px; justify-content: center; }
+.toc { padding: 0 22px 0 0; border: 0; border-right: 1px solid #dce2e7; border-radius: 0; background: transparent; }
+.toc strong { color: #263f55; font-family: var(--font-sans); font-size: .78rem; letter-spacing: .02em; text-transform: none; }
+.toc a { padding: 5px 0; color: #5b6b7c; font-size: .79rem; }
+.prose { max-width: 800px; }
+.prose > section { margin-bottom: 58px; }
+.prose > section > .eyebrow { margin-bottom: 9px; font-family: var(--font-sans); font-size: .78rem; letter-spacing: .03em; }
+.prose > section > .eyebrow::before { width: 16px; }
+.prose h2 { margin-bottom: 17px; padding-bottom: 9px; border-bottom: 1px solid #dce2e7; color: #17324b; font-size: clamp(1.65rem, 2.8vw, 2.25rem); }
+.prose h3 { color: #263f55; font-size: 1.18rem; letter-spacing: -.01em; }
+.prose p, .prose li { color: #354c60; font-size: .98rem; line-height: 1.72; }
+.io-grid, .phase-grid { gap: 12px; }
+.io-card, .phase { border-radius: 3px; background: #f7f9fa; }
+.io-card { padding: 18px; }
+.io-card h3 { margin-top: 14px; }
+.phase { padding: 20px; }
+.phase h3 { margin-top: 22px; }
+.paper-card { padding: 24px 0; border: 0; border-top: 1px solid #dce2e7; border-radius: 0; background: transparent; }
+.paper-card h3 { font-size: 1.35rem; }
+.paper-summary { margin-top: 17px; }
+.button { min-height: 42px; padding: 9px 14px; border-radius: 4px; font-size: .82rem; }
+.callout { padding: 18px 20px; background: #f3f7f8; }
+.metric-card { padding: 23px; border: 1px solid #dce2e7; border-radius: 4px; box-shadow: none; }
+.metric-primary strong { font-size: clamp(2rem, 4vw, 3rem); }
+.sample-frame { border-radius: 4px; }
+.sample-head { padding: 14px 17px; }
+.sample-body { padding: 20px; }
+.sample-turn { border-radius: 3px; }
+.download-card { padding: 22px; border: 1px solid #b9d7df; border-radius: 4px; background: #edf6f8; }
+.data-table-wrap { border-radius: 3px; }
+.code-block { border-radius: 4px; }
+.faq summary { padding-top: 18px; padding-bottom: 18px; }
+main > .cta-band { display: none; }
+.timeline--light { margin-top: 12px; }
+.timeline--light .timeline-item { grid-template-columns: 145px 1fr; }
+.timeline--light .timeline-item h3 { font-size: 1rem; }
+.timeline--light .timeline-item p { font-size: .82rem; }
+.page-hero + .section > .shell.split { max-width: 1040px; gap: 60px; }
+.page-hero + .section > .shell.split h2 { font-size: clamp(1.9rem, 3.5vw, 2.7rem); }
+.page-hero + .section > .shell.split .lede { font-size: 1rem; line-height: 1.7; }
+
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
 .reveal.is-visible { opacity: 1; transform: none; }
 
@@ -469,7 +517,7 @@ p { margin-top: 0; }
   .organizer-row { grid-template-columns: repeat(3, 1fr); }
   .resource-grid { grid-template-columns: 1fr 1fr; }
   .toc-layout { grid-template-columns: 1fr; }
-  .toc { position: relative; top: auto; display: flex; flex-wrap: wrap; gap: 0 18px; }
+  .toc { position: relative; top: auto; display: flex; flex-wrap: wrap; gap: 0 18px; padding: 0 0 17px; border-right: 0; border-bottom: 1px solid #dce2e7; }
   .toc strong { width: 100%; }
   .footer-grid { grid-template-columns: 1.3fr 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
@@ -508,6 +556,7 @@ p { margin-top: 0; }
   .academic-intro { padding: 52px 0 38px; }
   .academic-layout { grid-template-columns: 1fr; padding-top: 48px; padding-bottom: 60px; }
   .academic-sidebar { position: static; padding: 32px 0 0; border-top: 1px solid #dce2e7; border-left: 0; }
+  .page-hero { padding: 48px 0 42px; }
 }
 
 @media (max-width: 480px) {
