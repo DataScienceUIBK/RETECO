@@ -104,9 +104,10 @@ button, input { font: inherit; }
   margin: 0 0 17px;
   color: var(--cyan-deep);
   font-family: var(--font-mono);
-  font-size: .76rem;
+  font-size: 1rem;
   font-weight: 800;
-  letter-spacing: .12em;
+  line-height: 1.45;
+  letter-spacing: .09em;
   text-transform: uppercase;
 }
 .section--dark .eyebrow { color: var(--cyan); }
@@ -220,7 +221,7 @@ p { margin-top: 0; }
 .track-card::after { position: absolute; right: -90px; bottom: -130px; width: 300px; height: 300px; border: 1px solid currentColor; border-radius: 50%; opacity: .16; content: ""; }
 .track-card--time { color: var(--cyan); }
 .track-card--talk { color: var(--violet); }
-.track-number { font-family: var(--font-mono); font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.track-number { font-family: var(--font-mono); font-size: .92rem; font-weight: 850; line-height: 1.4; letter-spacing: .09em; text-transform: uppercase; }
 .track-card h3 { max-width: 420px; margin: 105px 0 18px; color: var(--white); font-size: clamp(2rem, 3.7vw, 3.2rem); }
 .track-card p { max-width: 510px; color: #bac4d2; }
 .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px; }
@@ -468,6 +469,8 @@ p { margin-top: 0; }
   .stat-grid, .people-grid, .organizer-row, .resource-grid, .footer-grid { grid-template-columns: 1fr; }
   .organizer-band-head { display: block; }
   .organizer-band-head .eyebrow { margin-bottom: 10px; }
+  .eyebrow { font-size: .86rem; letter-spacing: .07em; }
+  .track-number { font-size: .84rem; }
   .footer-brand { grid-column: auto; }
   .hero-actions .button { width: 100%; }
   .hero-panel { min-height: 360px; }
