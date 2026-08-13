@@ -65,3 +65,14 @@ if (!document.getElementById('mapmyvisitors')) {
   visitorCounter.appendChild(visitorScript);
   document.body.appendChild(visitorCounter);
 }
+
+// Load Cloudflare Web Analytics on every page. The beacon has no visible UI.
+if (!document.querySelector('script[data-cf-beacon]')) {
+  const cloudflareBeacon = document.createElement('script');
+  cloudflareBeacon.type = 'module';
+  cloudflareBeacon.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+  cloudflareBeacon.dataset.cfBeacon = JSON.stringify({
+    token: '704ec463af8d4b90b01c12d713ceed53'
+  });
+  document.head.appendChild(cloudflareBeacon);
+}
