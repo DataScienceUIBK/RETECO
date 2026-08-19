@@ -1,4 +1,5 @@
-# RETECO — Reasoning-Oriented Retrieval
+# RETECO : A SemEval-2027 Shared Task on Reasoning-Oriented Retrieval
+
 
 [Website](https://datascienceuibk.github.io/RETECO/) ·
 [Task](https://datascienceuibk.github.io/RETECO/task.html) ·
