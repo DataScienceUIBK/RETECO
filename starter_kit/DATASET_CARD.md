@@ -16,27 +16,55 @@ size_categories:
   - 1M<n<10M
 ---
 
-# RETECO — SemEval-2027 Task 1
+<div align="center">
 
-Official **training and development data** for [RETECO](https://datascienceuibk.github.io/RETECO/),
-the SemEval-2027 shared task on reasoning-oriented retrieval: retrieval that must
-reason about *when* evidence applies and *what the conversation has already
-established*.
+<img src="https://raw.githubusercontent.com/DataScienceUIBK/RETECO/main/docs/assets/brand/reteco-mark.svg" alt="RETECO" width="88">
 
-| | |
-| --- | --- |
-| Task website | https://datascienceuibk.github.io/RETECO/ |
-| Task definitions | https://datascienceuibk.github.io/RETECO/task.html |
-| Evaluation plan | https://datascienceuibk.github.io/RETECO/evaluation.html |
-| Code & baselines | https://github.com/DataScienceUIBK/RETECO |
-| Contact | abdelrahman.abdallah@uibk.ac.at |
+# RETECO
 
-> **Not the SemEval test set.** This is train/dev only. Final SemEval scoring uses
-> a separate, never-publicly-released test set with private gold judgments.
+### Training &amp; Development Data · SemEval-2027 Task 1
+
+Retrieval that must reason about **when** evidence applies<br>
+and **what the conversation has already established**.
+
+[![Task website](https://img.shields.io/badge/Task%20Website-Live-1f6feb?style=for-the-badge)](https://datascienceuibk.github.io/RETECO/)
+[![Starter kit](https://img.shields.io/badge/Starter%20Kit-GitHub-07101d?style=for-the-badge&logo=github)](https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit)
+[![SemEval-2027](https://img.shields.io/badge/SemEval--2027-Task%201-5dd9ff?style=for-the-badge)](https://semeval.github.io/SemEval2027/)
+
+![Domains](https://img.shields.io/badge/domains-24-informational?style=flat-square)
+![Documents](https://img.shields.io/badge/documents-2.16M-informational?style=flat-square)
+![Split](https://img.shields.io/badge/train%2Fdev-70%2F30-informational?style=flat-square)
+![Size](https://img.shields.io/badge/size-4.5%20GB-informational?style=flat-square)
+![Language](https://img.shields.io/badge/language-English-informational?style=flat-square)
+
+**[📋 Task](https://datascienceuibk.github.io/RETECO/task.html)** ·
+**[📊 Data](https://datascienceuibk.github.io/RETECO/data.html)** ·
+**[📐 Evaluation](https://datascienceuibk.github.io/RETECO/evaluation.html)** ·
+**[🚀 Participate](https://datascienceuibk.github.io/RETECO/participate.html)** ·
+**[🧰 Starter kit](https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit)**
+
+</div>
 
 ---
 
-## What is in here
+## 🎯 At a glance
+
+| | |
+| :--- | :--- |
+| **What** | Official training and development data for RETECO, the SemEval-2027 shared task on reasoning-oriented retrieval |
+| **Scope** | 2 tracks · 5 sub-tracks · 24 self-contained domains |
+| **Scale** | 2,161,196 documents · 1,730 temporal queries · 3,976 steps · 707 conversations · 2,971 turns |
+| **Splits** | 70 / 30 train / dev per domain · fixed seed · gold judgments for both |
+| **Metric** | nDCG@10 via `pytrec_eval` |
+| **Licence** | Text CC BY-SA 4.0 · RETECO annotations CC BY 4.0 |
+| **Contact** | [abdelrahman.abdallah@uibk.ac.at](mailto:abdelrahman.abdallah@uibk.ac.at) |
+
+> ⚠️ **This is not the SemEval test set.** Train and dev only. Final scoring uses a
+> separate, never-publicly-released test set with private gold judgments.
+
+---
+
+## 📦 What is in here
 
 Two tracks, 24 independent domains, each domain self-contained with its own
 retrieval corpus. Nothing needs to be fetched from anywhere else.
@@ -58,7 +86,7 @@ The five RETECO sub-tracks draw on this data as follows:
 
 ---
 
-## Splits: train / dev
+## ✂️ Splits: train / dev
 
 Every domain is split **70 / 30** with a fixed seed (`20270101`). The exact
 per-domain ID lists are in [`split_manifest.json`](split_manifest.json), so the
@@ -86,7 +114,7 @@ tune; use `dev` as your held-out check. The hidden SemEval test set is separate.
 
 ---
 
-## Layout
+## 🗂️ Layout
 
 ```text
 track1_tempo/<domain>/
@@ -117,7 +145,7 @@ law, monero, politics, quant, travel, workplace.
 **Track 2 domains** — biology, drones, earth_science, economics, hardware, law,
 medicalsciences, politics, psychology, robotics, sustainable_living.
 
-### Record formats
+### 📄 Record formats
 
 ```jsonc
 // track1_tempo/<domain>/examples_{train,dev}.jsonl        — Sub-track 1a
@@ -150,9 +178,9 @@ ex_3025_turn_1  0       drones_ex_3025_doc_0            1
 
 ---
 
-## How to use
+## 🚀 How to use
 
-### 1. Download
+### 1️⃣ Download
 
 ```bash
 pip install huggingface_hub
@@ -160,7 +188,7 @@ hf download DataScience-UIBK/RETECO-SemEval2027 --repo-type dataset \
     --local-dir reteco_data
 ```
 
-### 2. Get the baselines
+### 2️⃣ Get the baselines
 
 ```bash
 git clone https://github.com/DataScienceUIBK/RETECO.git
@@ -168,7 +196,7 @@ cd RETECO/starter_kit
 pip install -r requirements.txt          # pytrec_eval, gensim, pyserini (needs a JDK)
 ```
 
-### 3. Run on **train**, then on **dev**
+### 3️⃣ Run on **train**, then on **dev**
 
 The runner takes `--splits`, so train and dev are the same command with one word
 changed. Develop against `train`; keep `dev` as your held-out check.
@@ -198,7 +226,7 @@ Each run writes, per domain, a TREC run file `run_<subtrack>_<split>.trec` and a
 macro-averaged metrics. Per-domain results are cached, so an interrupted run
 resumes where it stopped.
 
-### 4. Score your own run
+### 4️⃣ Score your own run
 
 nDCG@10 via `pytrec_eval` is the official RETECO metric.
 
@@ -222,7 +250,7 @@ are also in `starter_kit/` if you want to begin without installing a JDK.
 
 ---
 
-## Reference baseline
+## 📈 Reference baseline
 
 BM25 on this release, macro-averaged over domains, nDCG@10. Retrieval and
 scoring use the same implementation the upstream benchmarks use (Lucene analyzer
@@ -244,7 +272,7 @@ Per-domain numbers for both splits: `BASELINE_RESULTS.md` in the RETECO repo.
 
 ---
 
-## Provenance
+## 🔗 Provenance
 
 Built deterministically from pinned upstream revisions:
 
@@ -261,7 +289,7 @@ ranking stays attainable, and are listed per-domain in `split_manifest.json`.
 
 ---
 
-## Licensing
+## ⚖️ Licensing
 
 Two licenses, because text and annotations have different origins:
 
@@ -278,7 +306,7 @@ authors. Do not redistribute hidden evaluation data or inferred gold labels.
 
 ---
 
-## Citation
+## 📚 Citation
 
 ```bibtex
 @article{abdallah2026tempo,
