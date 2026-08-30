@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="RETECO is SemEval-2027 Task 1 on reasoning-oriented retrieval across temporal and conversational contexts.">
+  <meta name="description" content="RETECO is SemEval-2027 Task 1 on reasoning-oriented retrieval across temporal and conversational contexts. Training and development data released 30 August 2026.">
   <meta name="theme-color" content="#ffffff">
   <meta property="og:title" content="RETECO — SemEval-2027 Task 1">
-  <meta property="og:description" content="Reasoning-oriented retrieval across time and conversation.">
+  <meta property="og:description" content="Reasoning-oriented retrieval across time and conversation. Training and development data now available on Hugging Face.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://datascienceuibk.github.io/RETECO/">
   <title>RETECO — SemEval-2027 Task 1</title>
@@ -23,6 +23,10 @@
       <nav class="nav-links" aria-label="Primary navigation"><a aria-current="page" href="index.html">Overview</a><a href="task.html">Task</a><a href="data.html">Data</a><a href="evaluation.html">Evaluation</a><a href="papers.html">Papers</a><a href="participate.html">Participate</a><a href="timeline.html">Timeline</a><a class="nav-cta" href="https://github.com/DataScienceUIBK/RETECO" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
     </div>
   </header>
+
+  <div class="announcement">
+    <div class="shell"><code>New · 30 Aug 2026</code><span>Training and development data are now published on Hugging Face — <a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">DataScience-UIBK/RETECO-SemEval2027 ↗</a></span></div>
+  </div>
 
   <main id="main" class="academic-home">
     <header class="academic-intro">
@@ -48,6 +52,15 @@
 
     <div class="shell academic-layout">
       <article class="academic-content">
+        <section id="news">
+          <h2>Latest news</h2>
+          <div class="news-grid">
+            <article class="news-card"><time datetime="2026-08-30">30 August 2026</time><h3>Training data released</h3><p>The full training and development release is live on Hugging Face: 24 domains, 2.16M documents, 70/30 train/dev splits, gold judgments for both. <a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Get the data ↗</a></p></article>
+            <article class="news-card"><time datetime="2026-08-11">11 August 2026</time><h3>Task accepted</h3><p>RETECO was accepted as SemEval-2027 Task 1. <a href="https://semeval.github.io/SemEval2027/">See the task list ↗</a></p></article>
+            <article class="news-card"><time datetime="2026-08-08">8 August 2026</time><h3>Sample data published</h3><p>A compact, human-inspected package showing the exact record and submission formats for both tracks. <a href="samples.html">Inspect the samples →</a></p></article>
+          </div>
+        </section>
+
         <section id="overview">
           <h2>Overview</h2>
           <p>Retrieval systems are commonly evaluated by topical relevance. RETECO instead focuses on cases where a system must reason about <strong>when information is valid</strong>, <strong>how events or facts change over time</strong>, and <strong>what has already been established in a conversation</strong>.</p>
@@ -75,9 +88,10 @@
 
         <section id="data-evaluation">
           <h2>Data and evaluation</h2>
-          <p>Public pilot data are available from <a href="https://github.com/tempo-bench/Tempo">TEMPO</a> and <a href="https://github.com/RECOR-Benchmark/RECOR">RECOR</a>. RETECO will use a separate held-out test set for the SemEval evaluation phase.</p>
+          <p>The official training and development data are available on <a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Hugging Face</a>: all 24 domain corpora, task files for every sub-track, and TREC qrels for both splits in a single download. They are built from the public <a href="https://github.com/tempo-bench/Tempo">TEMPO</a> and <a href="https://github.com/RECOR-Benchmark/RECOR">RECOR</a> benchmarks at pinned revisions. RETECO uses a separate held-out test set for the SemEval evaluation phase.</p>
           <p><strong>nDCG@10</strong> is the official retrieval leaderboard metric. Track-specific diagnostics report temporal coverage, temporal precision, conversation-turn depth, domain variation, and grounded generation quality.</p>
           <ul class="plain-link-list">
+            <li><a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Download the training and development data ↗</a></li>
             <li><a href="data.html">Corpus statistics, domains, formats, and baselines</a></li>
             <li><a href="samples.html">Inspectable sample data for both tracks</a></li>
             <li><a href="evaluation.html">Complete evaluation plan</a></li>
@@ -86,7 +100,7 @@
 
         <section id="participation">
           <h2>Participation</h2>
-          <p>Registration, the official evaluation platform, submission limits, and contact channels will be announced here when confirmed. Participants may use the public pilot repositories to inspect the data formats and reproduce baseline systems in the meantime.</p>
+          <p>Registration, the official evaluation platform, submission limits, and contact channels will be announced here when confirmed. The training and development data and the starter kit are already available, so systems can be built and validated now.</p>
           <p><a href="participate.html">Read the participation and reproducibility guide →</a></p>
         </section>
 
@@ -100,7 +114,7 @@
         <section>
           <h2>Important dates</h2>
           <dl class="date-list">
-            <div><dt>Training data</dt><dd><time datetime="2026-09-01">1 Sep 2026</time></dd></div>
+            <div><dt>Training data</dt><dd><time datetime="2026-08-30">30 Aug 2026</time> · released</dd></div>
             <div><dt>Evaluation opens</dt><dd><time datetime="2027-01-10">10 Jan 2027</time></dd></div>
             <div><dt>RETECO closes</dt><dd>To be announced</dd></div>
           </dl>
@@ -114,12 +128,15 @@
             <li><a href="samples.html">Sample data</a></li>
             <li><a href="data.html">Data and baselines</a></li>
             <li><a href="evaluation.html">Evaluation plan</a></li>
+            <li><a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Training data on Hugging Face ↗</a></li>
+            <li><a href="https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit">Starter kit and baselines ↗</a></li>
             <li><a href="https://github.com/DataScienceUIBK/RETECO">GitHub repository</a></li>
           </ul>
         </section>
 
         <section>
           <h2>Updates</h2>
+          <p><time datetime="2026-08-30">30 August 2026</time><br>Training and development data published on <a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Hugging Face</a>.</p>
           <p><time datetime="2026-08-11">11 August 2026</time><br>RETECO was accepted as a SemEval-2027 shared task.</p>
         </section>
 

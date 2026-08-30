@@ -1,0 +1,14 @@
+# RETECO starter kit
+#
+# Core (build the release, run the pure-Python starter baseline and scorer):
+pyarrow>=15
+huggingface_hub>=0.24
+
+# Official baseline + official scoring (mirrors the upstream TEMPO/RECOR setup):
+#   pytrec_eval  - the metric implementation both benchmark repos use
+#   gensim       - LuceneBM25Model (k1=0.9, b=0.4)
+#   pyserini     - the Lucene analyzer used for tokenisation; needs a JDK (21 works)
+pytrec_eval>=0.5
+gensim>=4.4
+pyserini>=2.4
+tqdm

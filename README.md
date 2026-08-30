@@ -16,6 +16,9 @@ retrieval and RAG systems can identify evidence that is relevant because of
 
 > RETECO has been accepted as a SemEval-2027 shared task.
 
+> **Training and development data released 30 August 2026** —
+> [DataScience-UIBK/RETECO-SemEval2027 on Hugging Face](https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027)
+
 [Read the final task proposal](docs/assets/papers/RETECO_SemEval_2027_Proposal.pdf)
 
 ## Tracks
@@ -30,6 +33,51 @@ retrieval and RAG systems can identify evidence that is relevant because of
 
 See the [full task definitions](https://datascienceuibk.github.io/RETECO/task.html)
 and [evaluation plan](https://datascienceuibk.github.io/RETECO/evaluation.html).
+
+## Training and development data
+
+The official train/dev release is on Hugging Face:
+**[DataScience-UIBK/RETECO-SemEval2027](https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027)**
+
+```bash
+hf download DataScience-UIBK/RETECO-SemEval2027 --repo-type dataset --local-dir reteco_data
+```
+
+One download contains everything needed for any sub-track: the full retrieval
+corpus of all 24 domains, task files, and TREC qrels for both splits.
+
+| | train | dev |
+| --- | ---: | ---: |
+| Track 1 queries | 1,211 | 519 |
+| Track 1 steps | 2,762 | 1,214 |
+| Track 2 conversations | 496 | 211 |
+| Track 2 turns | 2,113 | 858 |
+
+The split is 70/30 per domain with a fixed seed. The corpus is never split;
+Track 1 splits on the query (steps are nested inside their query record) and
+Track 2 splits on the whole conversation. Gold judgments ship for both splits —
+the SemEval test set is separate and never released.
+
+### Starter kit
+
+[`starter_kit/`](starter_kit/) has the baselines, scorer, format checker, and the
+build script that produces the release from pinned upstream revisions.
+
+```bash
+cd starter_kit && pip install -r requirements.txt
+python official_baseline.py --data ../../reteco_data --splits train dev
+```
+
+Reference BM25, nDCG@10, macro-averaged over domains:
+
+| Sub-track | Query given to the retriever | train | dev |
+| --- | --- | ---: | ---: |
+| 1a Temporal retrieval | Whole query | 0.0879 | 0.0967 |
+| 1b Step-wise retrieval | Query + step instruction | 0.0852 | 0.1063 |
+| 2a Conversational retrieval | Current turn only | 0.1837 | 0.1827 |
+| 2a Conversational retrieval | Turn + conversation history | 0.4539 | 0.4379 |
+
+Per-domain numbers: [`starter_kit/BASELINE_RESULTS.md`](starter_kit/BASELINE_RESULTS.md).
 
 ## Sample data
 
@@ -104,8 +152,9 @@ come from BRIGHT and five from StackExchange.
 - Code and baselines: [RECOR-Benchmark/RECOR](https://github.com/RECOR-Benchmark/RECOR)
 - Published paper: [ACL Anthology 2026.findings-acl.129](https://aclanthology.org/2026.findings-acl.129/)
 
-The public benchmarks support training and development. Final SemEval scoring
-uses a separate, never-publicly-released test set with private gold judgments.
+These are the upstream sources. The RETECO release above packages them into
+train/dev splits with qrels. Final SemEval scoring uses a separate,
+never-publicly-released test set with private gold judgments.
 
 ## Papers
 
@@ -169,6 +218,7 @@ RETECO/
 │   └── assets/
 │       ├── downloads/
 │       └── papers/
+├── starter_kit/                  # Baselines, scorer, format checker, build script
 ├── .github/workflows/            # Pages deployment
 ├── CITATIONS.bib
 ├── CONTRIBUTING.md
@@ -177,8 +227,9 @@ RETECO/
 └── README.md
 ```
 
-Competition format checkers, local scorers, starter baselines, and sample
-submissions will be added when their SemEval interfaces are frozen.
+Format checkers, local scorers, and starter baselines are in
+[`starter_kit/`](starter_kit/). Sample submissions will be added when the
+competition-platform interface is frozen.
 
 ## Local website preview
 
@@ -202,7 +253,7 @@ https://datascienceuibk.github.io/RETECO/
 ## Important dates
 
 - Sample data: August 8, 2026
-- Training data: September 1, 2026
+- Training data: **released August 30, 2026**
 - Evaluation: January 10–31, 2027
 - Paper and workshop dates: tentative; see the
   [official SemEval-2027 calendar](https://semeval.github.io/SemEval2027/)
@@ -217,7 +268,13 @@ For task questions, contact
 
 ## License
 
-The SemEval data release is planned under CC BY 4.0. Existing benchmark data
-and code may use different licenses; consult the license attached to each
-resource. A repository-level software license will be added before the first
-RETECO code release.
+The data release carries two licenses. **Corpus and question/answer text is
+CC BY-SA 4.0** — all passage text originates from Stack Exchange, whose user
+contributions are licensed CC BY-SA, which is share-alike and cannot be
+relicensed. **RETECO annotations (split assignments, TREC qrels,
+`split_manifest.json`) are CC BY 4.0.** Attribution for the underlying content
+remains with the original Stack Exchange authors.
+
+Existing benchmark data and code may use different licenses; consult the license
+attached to each resource. A repository-level software license will be added
+before the first tagged RETECO code release.
