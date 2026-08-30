@@ -580,3 +580,16 @@ main > .cta-band { display: none; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* Dated news list on the overview page: date in the left column, entry beside it,
+   collapsing to stacked rows on narrow screens. */
+.news-list { display: grid; grid-template-columns: 150px 1fr; gap: 0 22px; margin: 0; }
+.news-list dt { padding: 13px 0; color: #5b6b7c; font-family: var(--font-mono); font-size: .78rem; font-weight: 700; border-top: 1px solid #e1e6ea; }
+.news-list dd { margin: 0; padding: 13px 0; border-top: 1px solid #e1e6ea; }
+.news-list dt:first-of-type, .news-list dd:first-of-type { border-top: 0; }
+@media (max-width: 620px) {
+  .news-list { grid-template-columns: 1fr; gap: 0; }
+  .news-list dt { padding-bottom: 0; border-top: 1px solid #e1e6ea; }
+  .news-list dd { padding-top: 4px; border-top: 0; }
+  .news-list dt:first-of-type { border-top: 0; }
+}
