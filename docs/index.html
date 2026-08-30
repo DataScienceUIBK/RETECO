@@ -24,146 +24,145 @@
     </div>
   </header>
 
-  <div class="announcement">
-    <div class="shell"><code>New · 30 Aug 2026</code><span>Training and development data are now published on Hugging Face — <a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">DataScience-UIBK/RETECO-SemEval2027 ↗</a></span></div>
-  </div>
+  
 
-  <main id="main">
+  <main id="main" class="academic-home">
+    <header class="academic-intro">
+      <div class="shell academic-intro-inner">
+        <p class="task-kicker">SemEval-2027 · Task 1</p>
+        <h1>RETECO: Reasoning-Oriented Retrieval</h1>
+        <p class="academic-summary">A shared task on temporally grounded retrieval and
+        reasoning-intensive conversational retrieval.</p>
+        <p class="status-note"><strong>Status:</strong> Accepted as a SemEval-2027 shared task.
+        Training and development data released 30 August 2026.</p>
 
-  <section class="hero">
-    <div class="shell hero-grid">
-      <div>
-        <p class="eyebrow">SemEval-2027 · Task 1</p>
-        <h1>Reasoning-Oriented Retrieval<span>Across time and conversation</span></h1>
-        <p class="hero-copy">Most retrieval is judged on topical relevance. RETECO asks a harder
-        question: can a system find the evidence that matters because of <strong>when</strong> it
-        applies, and <strong>what the conversation has already established</strong>?</p>
-        <div class="hero-actions">
-          <a class="button button--primary" href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Get the data ↗</a>
-          <a class="button button--paper" href="task.html">Read the task</a>
-          <a class="button button--paper" href="participate.html">How to participate</a>
-        </div>
+        <section class="intro-organizers" aria-labelledby="intro-organizers-title">
+          <h2 id="intro-organizers-title">Organizers</h2>
+          <ul>
+            <li><strong>Abdelrahman Abdallah</strong><span>University of Innsbruck</span></li>
+            <li><strong>Mohammed Ali</strong><span>University of Innsbruck</span></li>
+            <li><strong>Muhammad Abdul-Mageed</strong><span>University of British Columbia</span></li>
+            <li><strong>Kevin Duh</strong><span>Johns Hopkins University</span></li>
+            <li><strong>Adam Jatowt</strong><span>University of Innsbruck</span></li>
+          </ul>
+          <p class="organizer-role">All listed team members are co-organizers.</p>
+        </section>
       </div>
-      <aside class="hero-panel">
-        <span class="panel-badge">2027</span>
-        <div class="stat-grid">
-          <div class="stat"><strong>2</strong><span>tracks</span></div>
-          <div class="stat"><strong>5</strong><span>sub-tracks</span></div>
-          <div class="stat"><strong>24</strong><span>domains</span></div>
-          <div class="stat"><strong>2.16M</strong><span>documents</span></div>
-        </div>
+    </header>
+
+    <div class="shell academic-layout">
+      <article class="academic-content">
+        <section id="overview">
+          <h2>Overview</h2>
+          <p>Retrieval systems are commonly evaluated by topical relevance. RETECO instead addresses
+          cases in which a system must reason about <strong>when information is valid</strong>,
+          <strong>how events or facts change over time</strong>, and <strong>what has already been
+          established in a conversation</strong>.</p>
+          <p>The task comprises two tracks and five sub-tracks, built on the TEMPO and RECOR
+          benchmarks. Participants may enter a single sub-track or work across retrieval and
+          grounded generation. Full definitions, including the required input and output for each
+          sub-track, are given on the <a href="task.html">task page</a>.</p>
+        </section>
+
+        <section id="data">
+          <h2>Data</h2>
+          <p>The training and development data are available from
+          <a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Hugging Face</a> in a single download. They comprise 24 domains and
+          2,161,196 documents, with each domain carrying its own complete retrieval corpus, so no
+          further resources are required.</p>
+          <p>Each domain is divided 70/30 into training and development sets under a fixed,
+          published seed, with relevance judgments released for both. The retrieval corpus itself is
+          not divided: systems search the full corpus of a domain in either split.</p>
+          <div class="data-table-wrap"><table class="data-table">
+            <thead><tr><th>Item</th><th>Train</th><th>Dev</th></tr></thead>
+            <tbody>
+              <tr><td>Track 1 queries</td><td>1,211</td><td>519</td></tr>
+              <tr><td>Track 1 decomposed steps</td><td>2,762</td><td>1,214</td></tr>
+              <tr><td>Track 2 conversations</td><td>496</td><td>211</td></tr>
+              <tr><td>Track 2 target turns</td><td>2,113</td><td>858</td></tr>
+            </tbody></table></div>
+          <p>The evaluation set is separate, newly annotated, and released without judgments during
+          the evaluation window. Corpus statistics, record formats and licensing are documented on
+          the <a href="data.html">data page</a>; worked examples of every record type are given on
+          the <a href="samples.html">samples page</a>.</p>
+        </section>
+
+        <section id="evaluation">
+          <h2>Evaluation</h2>
+          <p><strong>nDCG@10</strong>, computed with <code>pytrec_eval</code> and macro-averaged, is
+          the official retrieval metric for Sub-tracks 1a, 1b, 2a and 2c. Generation quality for
+          Sub-tracks 2b and 2c is reported alongside the retrieval results rather than combined with
+          them. Temporal coverage, temporal precision, conversation-turn depth and per-domain
+          results are reported as diagnostics. The full protocol is set out in the
+          <a href="evaluation.html">evaluation plan</a>.</p>
+          <p>A reference BM25 baseline, the official scorer and a submission format checker are
+          provided in the <a href="https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit">starter kit</a>. Reference results for both splits are
+          reported on the <a href="data.html#baselines">data page</a>.</p>
+        </section>
+
+        <section id="participation">
+          <h2>Participation</h2>
+          <p>Announcements are distributed through the
+          <a href="https://groups.google.com/g/semeval-2027-reteco">task mailing list</a>.
+          Registration, the evaluation platform and submission limits will be announced there and on
+          this site once confirmed. The <a href="participate.html">participation guide</a> describes
+          how to obtain the data, develop against the training split, score runs locally with the
+          official metric, and submit.</p>
+        </section>
+
+        <section id="citation">
+          <h2>Papers and proposal</h2>
+          <p>RETECO builds on the TEMPO and RECOR benchmarks. The accepted task proposal, paper
+          links and BibTeX records are given on the
+          <a href="papers.html">papers and citations page</a>.</p>
+        </section>
+      </article>
+
+      <aside class="academic-sidebar" aria-label="Task information">
+        <section>
+          <h2>Important dates</h2>
+          <dl class="date-list">
+            <div><dt>Sample data</dt><dd><time datetime="2026-08-08">8 Aug 2026</time></dd></div>
+            <div><dt>Training data</dt><dd><time datetime="2026-08-30">30 Aug 2026</time></dd></div>
+            <div><dt>Evaluation opens</dt><dd><time datetime="2027-01-10">10 Jan 2027</time></dd></div>
+            <div><dt>RETECO closes</dt><dd>To be announced</dd></div>
+          </dl>
+          <p class="sidebar-note">The closing date will be no later than 31 January 2027. See the
+          <a href="timeline.html">schedule notes</a> and the
+          <a href="https://semeval.github.io/SemEval2027/">SemEval-2027 calendar</a>.</p>
+        </section>
+
+        <section>
+          <h2>Resources</h2>
+          <ul class="sidebar-links">
+            <li><a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Training and development data</a></li>
+            <li><a href="https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit">Starter kit and baselines</a></li>
+            <li><a href="samples.html">Sample data</a></li>
+            <li><a href="assets/papers/RETECO_SemEval_2027_Proposal.pdf">Task proposal (PDF)</a></li>
+            <li><a href="https://github.com/DataScienceUIBK/RETECO">GitHub repository</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Updates</h2>
+          <p><time datetime="2026-08-30">30 August 2026</time><br>Training and development data and
+          the starter kit released.</p>
+          <p><time datetime="2026-08-11">11 August 2026</time><br>RETECO accepted as a SemEval-2027
+          shared task.</p>
+          <p><time datetime="2026-08-08">8 August 2026</time><br>Sample data published.</p>
+        </section>
+
+        <section>
+          <h2>Contact</h2>
+          <p>Task mailing list:
+          <a href="https://groups.google.com/g/semeval-2027-reteco">semeval-2027-reteco</a>.
+          Correspondence:
+          <a href="mailto:abdelrahman.abdallah@uibk.ac.at">abdelrahman.abdallah@uibk.ac.at</a>.</p>
+        </section>
       </aside>
     </div>
-  </section>
+  </main>
 
-  <section class="section section--compact">
-    <div class="shell">
-      <p class="eyebrow">Latest news</p>
-      <h2>What has happened so far.</h2>
-      <div class="news-grid">
-        <article class="news-card"><time datetime="2026-08-30">30 August 2026</time>
-          <h3>Training data released</h3>
-          <p>All 24 domains, 2.16M documents, 70/30 train and dev splits with gold judgments for
-          both. <a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Get the data ↗</a></p></article>
-        <article class="news-card"><time datetime="2026-08-30">30 August 2026</time>
-          <h3>Starter kit published</h3>
-          <p>BM25 baselines, the official scorer, and a submission format checker.
-          <a href="https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit">Open the starter kit ↗</a></p></article>
-        <article class="news-card"><time datetime="2026-08-11">11 August 2026</time>
-          <h3>Task accepted</h3>
-          <p>RETECO was accepted as SemEval-2027 Task 1.
-          <a href="https://semeval.github.io/SemEval2027/">See the task list ↗</a></p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--compact">
-    <div class="shell">
-      <p class="eyebrow">Where to start</p>
-      <h2>Four ways in.</h2>
-      <div class="resource-grid">
-        <a class="resource-card" href="task.html"><code>01 · UNDERSTAND</code>
-          <h3>The task</h3><p>Two tracks, five sub-tracks, and exactly what each one asks a system
-          to produce.</p><span>Read the definitions →</span></a>
-        <a class="resource-card" href="data.html"><code>02 · EXPLORE</code>
-          <h3>The data</h3><p>Per-domain corpora, record formats, splits, baselines and
-          licensing.</p><span>Browse the data →</span></a>
-        <a class="resource-card" href="samples.html"><code>03 · INSPECT</code>
-          <h3>Worked examples</h3><p>Real queries, conversations and judgments, shown in full before
-          you download anything.</p><span>See the samples →</span></a>
-        <a class="resource-card" href="participate.html"><code>04 · BUILD</code>
-          <h3>Participation guide</h3><p>Get the data, build a system, score it locally, and
-          submit.</p><span>Start building →</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--dark">
-    <div class="shell">
-      <p class="eyebrow">Two tracks</p>
-      <h2>Retrieval that has to reason.</h2>
-      <div class="track-grid">
-        <article class="track-card">
-          <p class="track-number">Track 01 · 13 domains<br>Sub-tracks 1a, 1b</p>
-          <h3>Temporal Grounded Retrieval</h3>
-          <p>Evidence has to be topically relevant <em>and</em> temporally aligned with the query —
-          for whole questions, and for the decomposed steps a system must work through.</p>
-        </article>
-        <article class="track-card">
-          <p class="track-number">Track 02 · 11 domains<br>Sub-tracks 2a, 2b, 2c</p>
-          <h3>Conversational Retrieval</h3>
-          <p>Relevance depends on what the dialogue already established. Retrieve for the current
-          turn, generate a grounded answer, or do both end to end.</p>
-        </article>
-      </div>
-      <div class="button-row"><a class="button button--light" href="task.html">All five sub-tracks in detail →</a></div>
-    </div>
-  </section>
-
-  <section class="section section--compact">
-    <div class="shell">
-      <p class="eyebrow">Schedule</p>
-      <h2>Key dates.</h2>
-      <div class="data-table-wrap"><table class="data-table"><thead><tr><th>Date</th><th>Milestone</th>
-      <th>Status</th></tr></thead><tbody>
-      <tr><td>8 Aug 2026</td><td>Sample data</td><td>Released</td></tr>
-      <tr><td>30 Aug 2026</td><td>Training and development data</td><td>Released</td></tr>
-      <tr><td>10 Jan 2027</td><td>Evaluation window opens</td><td>Upcoming</td></tr>
-      <tr><td>31 Jan 2027</td><td>Evaluation closes (at the latest)</td><td>Upcoming</td></tr>
-      </tbody></table></div>
-      <p>Paper and workshop dates follow the central SemEval calendar and are still tentative.</p>
-      <div class="button-row"><a class="button" href="timeline.html">Full schedule →</a>
-      <a class="button button--paper" href="https://semeval.github.io/SemEval2027/">Official SemEval calendar ↗</a></div>
-    </div>
-  </section>
-
-  <section class="section section--compact">
-    <div class="shell">
-      <p class="eyebrow">Organizers</p>
-      <h2>Who runs the task.</h2>
-      <div class="people-grid">
-        <article class="person"><div class="person-initials">AA</div><h3>Abdelrahman Abdallah</h3><p>University of Innsbruck</p></article>
-        <article class="person"><div class="person-initials">MA</div><h3>Mohammed Ali</h3><p>University of Innsbruck</p></article>
-        <article class="person"><div class="person-initials">MA</div><h3>Muhammad Abdul-Mageed</h3><p>University of British Columbia</p></article>
-        <article class="person"><div class="person-initials">KD</div><h3>Kevin Duh</h3><p>Johns Hopkins University</p></article>
-        <article class="person"><div class="person-initials">AJ</div><h3>Adam Jatowt</h3><p>University of Innsbruck</p></article>
-      </div>
-      <p>All listed team members are co-organizers. Task questions:
-      <a href="mailto:abdelrahman.abdallah@uibk.ac.at">abdelrahman.abdallah@uibk.ac.at</a>.
-      The participant mailing list will be announced on the
-      <a href="participate.html">participation guide</a>.</p>
-    </div>
-  </section>
-
-  <section class="cta-band">
-    <div class="shell">
-      <h2>The data is out. The evaluation opens 10 January 2027.</h2>
-      <div class="button-row"><a class="button button--primary" href="participate.html">Start participating →</a></div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site-footer"><div class="shell"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="index.html"><img class="brand-mark" src="assets/brand/reteco-mark.svg" alt=""><span class="brand-name">RETECO</span></a><p>A SemEval-2027 shared task advancing reasoning-oriented retrieval across temporal and conversational contexts.</p></div><div class="footer-col"><strong>The task</strong><a href="task.html">Tracks &amp; sub-tracks</a><a href="evaluation.html">Evaluation</a><a href="timeline.html">Timeline</a></div><div class="footer-col"><strong>The data</strong><a href="data.html">Corpora &amp; formats</a><a href="samples.html">Worked examples</a><a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Download ↗</a></div><div class="footer-col"><strong>Take part</strong><a href="participate.html">Participation guide</a><a href="participate.html#faq">FAQ</a><a href="https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit">Starter kit ↗</a><a href="papers.html">Papers &amp; citations</a></div></div><div class="footer-bottom"><span>© <span data-year>2026</span> RETECO organizers.</span><span>Hosted by DataScienceUIBK · University of Innsbruck</span></div></div></footer>
+  <footer class="site-footer"><div class="shell"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="index.html"><img class="brand-mark" src="assets/brand/reteco-mark.svg" alt=""><span class="brand-name">RETECO</span></a><p>A SemEval-2027 shared task advancing reasoning-oriented retrieval across temporal and conversational contexts.</p></div><div class="footer-col"><strong>The task</strong><a href="task.html">Tracks &amp; sub-tracks</a><a href="evaluation.html">Evaluation</a><a href="timeline.html">Timeline</a></div><div class="footer-col"><strong>The data</strong><a href="data.html">Corpora &amp; formats</a><a href="samples.html">Worked examples</a><a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Download ↗</a></div><div class="footer-col"><strong>Take part</strong><a href="participate.html">Participation guide</a><a href="participate.html#faq">FAQ</a><a href="https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit">Starter kit ↗</a><a href="papers.html">Papers &amp; citations</a></div></div><div class="footer-bottom"><span>© <span data-year>2026</span> RETECO organizers.</span><span>Hosted by DataScienceUIBK · University of Innsbruck</span></div></div></footer>
 </body>
 </html>
