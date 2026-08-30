@@ -580,3 +580,15 @@ main > .cta-band { display: none; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* Home hero panel: the stat grid sits inside a narrow rounded panel, so it needs
+   two columns and a smaller type scale than the full-width variant. */
+.hero-panel { display: grid; place-items: center; padding: 30px; }
+.hero-panel .stat-grid { width: 100%; border: 0; border-radius: 18px; overflow: hidden; }
+.hero-panel .stat-grid { grid-template-columns: 1fr 1fr; }
+.hero-panel .stat { min-height: 128px; padding: 22px; background: rgba(255,255,255,.55); }
+.hero-panel .stat strong { font-size: clamp(1.5rem, 2.4vw, 2.3rem); }
+.hero-panel .stat span { font-size: .78rem; }
+@media (max-width: 480px) {
+  .hero-panel .stat-grid { grid-template-columns: 1fr 1fr; }
+}
