@@ -1,27 +1,77 @@
-# RETECO : A SemEval-2027 Shared Task on Reasoning-Oriented Retrieval
+<div align="center">
 
+<img src="docs/assets/brand/reteco-mark.svg" alt="RETECO" width="88">
 
-[Website](https://datascienceuibk.github.io/RETECO/) ·
-[Task](https://datascienceuibk.github.io/RETECO/task.html) ·
-[Data & Corpora](https://datascienceuibk.github.io/RETECO/data.html) ·
-[Sample Data](https://datascienceuibk.github.io/RETECO/samples.html) ·
-[Evaluation](https://datascienceuibk.github.io/RETECO/evaluation.html) ·
-[Papers](https://datascienceuibk.github.io/RETECO/papers.html) ·
-[Participate](https://datascienceuibk.github.io/RETECO/participate.html)
+# RETECO
 
-**RETECO** is a SemEval-2027 shared task on retrieval that must reason over
-temporal constraints and multi-turn conversational context. It asks whether
-retrieval and RAG systems can identify evidence that is relevant because of
-*when* it applies and *what the conversation has already established*.
+### A SemEval-2027 Shared Task on Reasoning-Oriented Retrieval
 
-> RETECO has been accepted as a SemEval-2027 shared task.
+Retrieval that must reason about **when** evidence applies<br>
+and **what the conversation has already established**.
 
-> **Training and development data released 30 August 2026** —
-> [DataScience-UIBK/RETECO-SemEval2027 on Hugging Face](https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027)
+[![SemEval-2027 Task 1](https://img.shields.io/badge/SemEval--2027-Task%201-07101d?style=for-the-badge)](https://semeval.github.io/SemEval2027/)
+[![Dataset on Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-Available-5dd9ff?style=for-the-badge)](https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027)
+[![Website](https://img.shields.io/badge/Website-Live-1f6feb?style=for-the-badge)](https://datascienceuibk.github.io/RETECO/)
 
-[Read the final task proposal](docs/assets/papers/RETECO_SemEval_2027_Proposal.pdf)
+![Domains](https://img.shields.io/badge/domains-24-informational?style=flat-square)
+![Documents](https://img.shields.io/badge/documents-2.16M-informational?style=flat-square)
+![Split](https://img.shields.io/badge/train%2Fdev-70%2F30-informational?style=flat-square)
+![Language](https://img.shields.io/badge/language-English-informational?style=flat-square)
+![Text licence](https://img.shields.io/badge/text-CC%20BY--SA%204.0-brightgreen?style=flat-square)
+![Annotation licence](https://img.shields.io/badge/annotations-CC%20BY%204.0-brightgreen?style=flat-square)
 
-## Tracks
+**[🌐 Website](https://datascienceuibk.github.io/RETECO/)** ·
+**[📋 Task](https://datascienceuibk.github.io/RETECO/task.html)** ·
+**[📊 Data](https://datascienceuibk.github.io/RETECO/data.html)** ·
+**[🔍 Samples](https://datascienceuibk.github.io/RETECO/samples.html)** ·
+**[📐 Evaluation](https://datascienceuibk.github.io/RETECO/evaluation.html)** ·
+**[📄 Papers](https://datascienceuibk.github.io/RETECO/papers.html)** ·
+**[🚀 Participate](https://datascienceuibk.github.io/RETECO/participate.html)**
+
+[📕 Read the task proposal (PDF)](docs/assets/papers/RETECO_SemEval_2027_Proposal.pdf)
+
+</div>
+
+---
+
+## 📰 News
+
+| Date | | Update |
+| :--- | :---: | :--- |
+| **30 Aug 2026** | 🚀 | **Training and development data released.** All 24 domains, 2.16M documents, 70/30 train/dev splits with gold judgments for both — [get it on Hugging Face](https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027). |
+| **30 Aug 2026** | 🧰 | **Starter kit published.** BM25 baselines, the official `pytrec_eval` scorer, a submission format checker, and the deterministic build script — [`starter_kit/`](starter_kit/). |
+| **30 Aug 2026** | 🧪 | **Reference baselines** for every retrieval sub-track on both splits — [`BASELINE_RESULTS.md`](starter_kit/BASELINE_RESULTS.md). |
+| **11 Aug 2026** | ✅ | **RETECO accepted as SemEval-2027 Task 1** — [see the task list](https://semeval.github.io/SemEval2027/). |
+| **08 Aug 2026** | 📦 | **Sample data published** — a compact, human-inspected package showing the exact record and submission formats. [Inspect the samples](https://datascienceuibk.github.io/RETECO/samples.html). |
+
+> [!NOTE]
+> **Next up:** registration, the participant mailing list, and the competition
+> platform. They will be announced here and on the
+> [participation guide](https://datascienceuibk.github.io/RETECO/participate.html).
+
+---
+
+## ⚡ Quick start
+
+```bash
+# 1 — get the data (~4.5 GB; everything you need, in one download)
+pip install huggingface_hub
+hf download DataScience-UIBK/RETECO-SemEval2027 --repo-type dataset --local-dir reteco_data
+
+# 2 — get the baselines
+git clone https://github.com/DataScienceUIBK/RETECO.git
+cd RETECO/starter_kit && pip install -r requirements.txt
+
+# 3 — develop on train, then check yourself on dev
+python official_baseline.py --data ../../reteco_data --splits train
+python official_baseline.py --data ../../reteco_data --splits dev
+```
+
+New to the task? The [participation guide](https://datascienceuibk.github.io/RETECO/participate.html)
+walks through choosing a sub-track, building a system, and scoring it locally
+with the same metric the leaderboard uses.
+
+## 🎯 Tracks
 
 | Track | Sub-track | Required output | Official retrieval score |
 | --- | --- | --- | --- |
@@ -34,7 +84,7 @@ retrieval and RAG systems can identify evidence that is relevant because of
 See the [full task definitions](https://datascienceuibk.github.io/RETECO/task.html)
 and [evaluation plan](https://datascienceuibk.github.io/RETECO/evaluation.html).
 
-## Training and development data
+## 📊 Training and development data
 
 The official train/dev release is on Hugging Face:
 **[DataScience-UIBK/RETECO-SemEval2027](https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027)**
@@ -58,7 +108,7 @@ Track 1 splits on the query (steps are nested inside their query record) and
 Track 2 splits on the whole conversation. Gold judgments ship for both splits —
 the SemEval test set is separate and never released.
 
-### Starter kit
+### 🧰 Starter kit
 
 [`starter_kit/`](starter_kit/) has the baselines, scorer, format checker, and the
 build script that produces the release from pinned upstream revisions.
@@ -79,7 +129,7 @@ Reference BM25, nDCG@10, macro-averaged over domains:
 
 Per-domain numbers: [`starter_kit/BASELINE_RESULTS.md`](starter_kit/BASELINE_RESULTS.md).
 
-## Sample data
+## 🔍 Sample data
 
 The repository contains a compact, human-inspected package copied from the
 official TEMPO and RECOR releases:
@@ -98,7 +148,7 @@ and not the hidden SemEval test set. It contains only referenced positive
 evidence, so retrieval systems must not be evaluated against the sample corpus
 alone.
 
-## Data and corpora
+## 🗂️ Data and corpora
 
 ### Track 1: TEMPO
 
@@ -156,7 +206,7 @@ These are the upstream sources. The RETECO release above packages them into
 train/dev splits with qrels. Final SemEval scoring uses a separate,
 never-publicly-released test set with private gold judgments.
 
-## Papers
+## 📄 Papers
 
 ### TEMPO
 
@@ -201,7 +251,7 @@ Both records are available in [CITATIONS.bib](CITATIONS.bib). The official
 RETECO task-paper citation will be added after the SemEval-2027 task description
 is published.
 
-## Repository map
+## 🗺️ Repository map
 
 ```text
 RETECO/
@@ -231,7 +281,7 @@ Format checkers, local scorers, and starter baselines are in
 [`starter_kit/`](starter_kit/). Sample submissions will be added when the
 competition-platform interface is frozen.
 
-## Local website preview
+## 💻 Local website preview
 
 The website is dependency-free:
 
@@ -241,7 +291,7 @@ python -m http.server 8000 --directory docs
 
 Then open `http://localhost:8000/`.
 
-## GitHub Pages deployment
+## 🌐 GitHub Pages deployment
 
 The included workflow publishes `docs/`. In repository settings, choose
 **GitHub Actions** as the Pages source. The site URL is:
@@ -250,7 +300,7 @@ The included workflow publishes `docs/`. In repository settings, choose
 https://datascienceuibk.github.io/RETECO/
 ```
 
-## Important dates
+## 📅 Important dates
 
 - Sample data: August 8, 2026
 - Training data: **released August 30, 2026**
@@ -258,7 +308,7 @@ https://datascienceuibk.github.io/RETECO/
 - Paper and workshop dates: tentative; see the
   [official SemEval-2027 calendar](https://semeval.github.io/SemEval2027/)
 
-## Organizers
+## 👥 Organizers
 
 Abdelrahman Abdallah, Mohammed Ali, Muhammad Abdul-Mageed, Kevin Duh, and
 Adam Jatowt.
@@ -266,7 +316,7 @@ Adam Jatowt.
 For task questions, contact
 [Abdelrahman Abdallah](mailto:abdelrahman.abdallah@uibk.ac.at).
 
-## License
+## ⚖️ License
 
 The data release carries two licenses. **Corpus and question/answer text is
 CC BY-SA 4.0** — all passage text originates from Stack Exchange, whose user
