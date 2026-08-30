@@ -593,3 +593,39 @@ main > .cta-band { display: none; }
   .news-list dd { padding-top: 4px; border-top: 0; }
   .news-list dt:first-of-type { border-top: 0; }
 }
+
+/* News list: monochrome line icons, a "New" marker on the most recent entry, and a
+   short staggered entrance. Pure CSS, so a script failure can never hide the news. */
+.news-icon, .link-icon {
+  flex: none; width: 16px; height: 16px; fill: none; stroke: currentColor;
+  stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+}
+.news-list dt { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.news-list dt .news-icon { color: #087397; }
+
+.news-tag {
+  padding: 2px 8px; border-radius: 999px; background: #087397; color: #fff;
+  font-family: var(--font-sans); font-size: .64rem; font-weight: 800;
+  letter-spacing: .06em; text-transform: uppercase;
+  animation: news-tag-pulse 1.9s ease-out 3;
+}
+@keyframes news-tag-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(8, 115, 151, 0); }
+  35%      { box-shadow: 0 0 0 5px rgba(8, 115, 151, .22); }
+}
+
+.news-list--animated dt, .news-list--animated dd { animation: news-in .5s ease both; }
+.news-list--animated dt:nth-of-type(1), .news-list--animated dd:nth-of-type(1) { animation-delay: .05s; }
+.news-list--animated dt:nth-of-type(2), .news-list--animated dd:nth-of-type(2) { animation-delay: .15s; }
+.news-list--animated dt:nth-of-type(3), .news-list--animated dd:nth-of-type(3) { animation-delay: .25s; }
+@keyframes news-in { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
+
+.sidebar-links { list-style: none; padding-left: 0; }
+.sidebar-links a { display: inline-flex; align-items: flex-start; gap: 8px; }
+.sidebar-links .link-icon { margin-top: 3px; color: #7b8a9a; }
+.sidebar-links a:hover .link-icon { color: #087397; }
+
+@media (prefers-reduced-motion: reduce) {
+  .news-tag { animation: none; }
+  .news-list--animated dt, .news-list--animated dd { animation: none; opacity: 1; transform: none; }
+}
