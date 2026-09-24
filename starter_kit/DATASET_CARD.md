@@ -22,7 +22,7 @@ size_categories:
 
 # RETECO
 
-### Training &amp; Development Data · SemEval-2027 Task 1
+## Training &amp; Development Data · SemEval-2027 Task 1
 
 Retrieval that must reason about **when** evidence applies<br>
 and **what the conversation has already established**.
@@ -32,9 +32,9 @@ and **what the conversation has already established**.
 [![SemEval-2027](https://img.shields.io/badge/SemEval--2027-Task%201-5dd9ff?style=for-the-badge)](https://semeval.github.io/SemEval2027/)
 
 ![Domains](https://img.shields.io/badge/domains-24-informational?style=flat-square)
-![Documents](https://img.shields.io/badge/documents-2.16M-informational?style=flat-square)
+![Documents](https://img.shields.io/badge/documents-1.67M-informational?style=flat-square)
 ![Split](https://img.shields.io/badge/train%2Fdev-70%2F30-informational?style=flat-square)
-![Size](https://img.shields.io/badge/size-4.5%20GB-informational?style=flat-square)
+![Size](https://img.shields.io/badge/size-3.2%20GB-informational?style=flat-square)
 ![Language](https://img.shields.io/badge/language-English-informational?style=flat-square)
 
 **[📋 Task](https://datascienceuibk.github.io/RETECO/task.html)** ·
@@ -53,7 +53,7 @@ and **what the conversation has already established**.
 | :--- | :--- |
 | **What** | Official training and development data for RETECO, the SemEval-2027 shared task on reasoning-oriented retrieval |
 | **Scope** | 2 tracks · 5 sub-tracks · 24 self-contained domains |
-| **Scale** | 2,161,196 documents · 1,730 temporal queries · 3,976 steps · 707 conversations · 2,971 turns |
+| **Scale** | 1,674,300 documents · 1,730 temporal queries · 3,976 steps · 707 conversations · 2,971 turns |
 | **Splits** | 70 / 30 train / dev per domain · fixed seed · gold judgments for both |
 | **Metric** | nDCG@10 via `pytrec_eval` |
 | **Licence** | Text CC BY-SA 4.0 · RETECO annotations CC BY 4.0 |
@@ -64,6 +64,31 @@ and **what the conversation has already established**.
 
 ---
 
+## 🆕 v1.1 · Track 1 corpora deduplicated
+
+The Track 1 corpora inherited many exact duplicates from upstream TEMPO: the same
+web text stored under several IDs (licence headers, disclaimers, and the same page
+section saved once for every query that retrieved it). v1.1 keeps one copy of each text.
+
+- **Track 1: 1,654,055 → 1,167,159 documents** (486,896 duplicates removed, 29.4%).
+  Largest reductions: bitcoin 50%, cardano 46%, history 44%, monero 37%.
+- **No gold text is lost.** When a group of copies contains a gold document, the gold
+  ID is the one kept. Where two gold IDs held the same text, 92 IDs are merged into
+  one; the 57 qrels lines that listed the same text twice for one query or step are merged too.
+  Guidance annotations are all kept, so 36 guidance records now hold more than one
+  annotation for the same `doc_id` (53 extra annotations in total).
+- **Only identical texts are merged.** Differences in whitespace (spaces, line
+  breaks, blank lines) are ignored; any other difference, even only in punctuation
+  or formatting, keeps documents separate, so no date, number or version is ever
+  merged away.
+- **Every removed ID maps to the kept ID** in `track1_tempo/<domain>/duplicate_map.json`.
+  To score a run made on v1.0, replace each document ID through the map and drop
+  repeated IDs within a ranking.
+- **Unchanged:** queries, steps, splits, topic IDs and all of Track 2.
+- v1.0 stays available: `hf download DataScience-UIBK/RETECO-SemEval2027 --repo-type dataset --revision v1.0`.
+
+---
+
 ## 📦 What is in here
 
 Two tracks, 24 independent domains, each domain self-contained with its own
@@ -71,7 +96,7 @@ retrieval corpus. Nothing needs to be fetched from anywhere else.
 
 | | Domains | Corpus documents | Task items |
 | --- | ---: | ---: | --- |
-| **Track 1 · Temporal Grounded Retrieval** | 13 | 1,654,055 | 1,730 queries · 3,976 steps |
+| **Track 1 · Temporal Grounded Retrieval** | 13 | 1,167,159 | 1,730 queries · 3,976 steps |
 | **Track 2 · Conversational Retrieval** | 11 | 507,141 | 707 conversations · 2,971 turns |
 
 The five RETECO sub-tracks draw on this data as follows:
@@ -119,6 +144,7 @@ tune; use `dev` as your held-out check. The hidden SemEval test set is separate.
 ```text
 track1_tempo/<domain>/
   documents.jsonl              # full corpus, shared by both splits: {id, content}
+  duplicate_map.json           # v1.1: removed duplicate ID -> kept ID
   examples_train.jsonl         # 1a: {id, query, gold_ids, gold_answers}
   examples_dev.jsonl
   steps_train.jsonl            # 1b: one record per query, steps nested
@@ -258,10 +284,14 @@ scoring use the same implementation the upstream benchmarks use (Lucene analyzer
 
 | Sub-track | train | dev |
 | --- | ---: | ---: |
-| 1a · whole-query retrieval | 0.0879 | 0.0967 |
-| 1b · step-wise retrieval | 0.0852 | 0.1063 |
+| 1a · whole-query retrieval | 0.1075 | 0.1147 |
+| 1b · step-wise retrieval | 0.1024 | 0.1177 |
 | 2a · current turn only | 0.1837 | 0.1827 |
 | 2a · query + conversation history | 0.4539 | 0.4379 |
+
+Track 1 numbers are on the deduplicated v1.1 corpora. On v1.0 they were
+0.0879 / 0.0967 (1a, train / dev) and 0.0852 / 0.1063 (1b), mostly because
+repeated copies of the same text used to fill top-10 slots.
 
 Two things to read off this table. Lexical matching alone is weak on Track 1 —
 temporal grounding is not a keyword problem, and there is a lot of headroom.
@@ -281,8 +311,10 @@ Built deterministically from pinned upstream revisions:
 | TEMPO | [`tempo26/Tempo`](https://huggingface.co/datasets/tempo26/Tempo) | `f9df06c05688225e37701974d23c8e3c5d4efaf6` |
 | RECOR | [`RECOR-Benchmark/RECOR`](https://huggingface.co/datasets/RECOR-Benchmark/RECOR) | `d9faa639019dcfa1a1fea2aece55ebcba3083c00` |
 
-Every published corpus, query, step, conversation and turn count reproduces
-exactly. TEMPO's four LLM query-reformulation configs are **not** included: the
+Every published query, step, conversation and turn count reproduces exactly, as
+do the Track 2 corpora. The Track 1 corpora are the upstream corpora with exact
+duplicates removed (see v1.1 above); `duplicate_map.json` recovers every upstream
+ID. TEMPO's four LLM query-reformulation configs are **not** included: the
 official system input is the original query. Three RECOR gold document IDs name
 documents absent from every corpus; they are dropped from the qrels so a perfect
 ranking stays attainable, and are listed per-domain in `split_manifest.json`.

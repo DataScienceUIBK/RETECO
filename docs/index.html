@@ -55,7 +55,15 @@
         <section id="news">
           <h2>News</h2>
           <dl class="news-list news-list--animated">
-            <dt><svg class="news-icon" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7.5" ry="3"/><path d="M4.5 6v6c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3V6"/><path d="M4.5 12v6c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3v-6"/></svg><time datetime="2026-08-30">30 August 2026</time><span class="news-tag">New</span></dt>
+            <dt><svg class="news-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg><time datetime="2026-09-25">25 September 2026</time><span class="news-tag">New</span></dt>
+            <dd><strong>Data v1.1: duplicate documents removed from Track 1.</strong> Many Track 1
+              documents appeared several times under different IDs (up to half of the Bitcoin corpus), an
+              issue inherited from the upstream TEMPO corpora and reported by a participant. Version 1.1 on
+              <a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Hugging Face</a> keeps one copy of each text, reducing Track 1 from
+              1,654,055 to 1,167,159 documents. All gold labels are preserved; queries, splits and Track 2
+              are unchanged. Please re-download the data and rebuild your indexes.
+              <a href="data.html#versions">What changed</a>.</dd>
+            <dt><svg class="news-icon" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7.5" ry="3"/><path d="M4.5 6v6c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3V6"/><path d="M4.5 12v6c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3v-6"/></svg><time datetime="2026-08-30">30 August 2026</time></dt>
             <dd>Training and development data released on
               <a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Hugging Face</a>: 24 domains and 2,161,196 documents, divided
               70/30 into training and development sets with relevance judgments for both. The
@@ -86,7 +94,7 @@
           <h2>Data</h2>
           <p>The training and development data are available from
           <a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Hugging Face</a> in a single download. They comprise 24 domains and
-          2,161,196 documents, with each domain carrying its own complete retrieval corpus, so no
+          1,674,300 documents (version 1.1), with each domain carrying its own complete retrieval corpus, so no
           further resources are required.</p>
           <p>Each domain is divided 70/30 into training and development sets under a fixed,
           published seed, with relevance judgments released for both. The retrieval corpus itself is

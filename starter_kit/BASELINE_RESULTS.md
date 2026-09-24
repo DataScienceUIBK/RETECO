@@ -5,38 +5,43 @@ Retrieval: verbatim `retrieval_bm25` from the upstream TEMPO and RECOR repos
 Scoring: upstream `calculate_retrieval_metrics` — `pytrec_eval`, `ndcg_cut_10`.
 Macro-averaged over domains, as both papers do.
 
+Track 1 numbers are measured on **data v1.1** (Track 1 corpora deduplicated,
+25 Sep 2026). On v1.0 the Track 1 macro averages were 1a 0.0879 / 0.0967 and
+1b 0.0852 / 0.1063 (train / dev). Track 2 data did not change.
+
 ## Macro-average nDCG@10
 
 | Sub-track | train | dev | published (full set) |
 | --- | ---: | ---: | ---: |
-| 1a · whole-query retrieval | 0.0879 | 0.0967 | 0.108 (TEMPO paper) |
-| 1b · step-wise retrieval | 0.0852 | 0.1063 | not reported |
+| 1a · whole-query retrieval | 0.1075 | 0.1147 | 0.108 (TEMPO paper) |
+| 1b · step-wise retrieval | 0.1024 | 0.1177 | not reported |
 | 2a · Base (current turn only) | 0.1837 | 0.1827 | 0.185 (RECOR Table 3) |
 | 2a · +History | 0.4539 | 0.4379 | 0.446 (RECOR Table 3) |
 
 Our splits cover 70% / 30% of each domain, so exact equality with the
 full-set published figures is not expected; Track 2 reproduces both published
-BM25 configurations to within 0.003.
+BM25 configurations to within 0.003. The v1.1 Track 1 corpora are also
+deduplicated, so they are smaller than the corpora used in the TEMPO paper.
 
 ## Per-domain nDCG@10
 
-### Track 1 · TEMPO
+### Track 1 · TEMPO (data v1.1)
 
 | Domain | 1a train | 1a dev | 1b train | 1b dev |
 | --- | ---: | ---: | ---: | ---: |
-| bitcoin | 0.0695 | 0.0263 | 0.0774 | 0.0205 |
-| cardano | 0.1349 | 0.0851 | 0.1174 | 0.0554 |
-| economics | 0.0382 | 0.0480 | 0.0278 | 0.0517 |
-| genealogy | 0.1003 | 0.1677 | 0.0982 | 0.2060 |
-| history | 0.0691 | 0.0877 | 0.0651 | 0.0989 |
-| hsm | 0.1627 | 0.2239 | 0.1591 | 0.2084 |
-| iota | 0.0199 | 0.2083 | 0.0000 | 0.3289 |
-| law | 0.0943 | 0.0574 | 0.0846 | 0.0549 |
-| monero | 0.0278 | 0.0252 | 0.0517 | 0.0103 |
-| politics | 0.2792 | 0.2550 | 0.2425 | 0.2306 |
-| quant | 0.0255 | 0.0218 | 0.0085 | 0.0374 |
-| travel | 0.0429 | 0.0275 | 0.0378 | 0.0492 |
-| workplace | 0.0777 | 0.0230 | 0.1369 | 0.0302 |
+| bitcoin | 0.0856 | 0.0370 | 0.0888 | 0.0299 |
+| cardano | 0.1848 | 0.1027 | 0.1655 | 0.0627 |
+| economics | 0.0382 | 0.0467 | 0.0300 | 0.0463 |
+| genealogy | 0.1242 | 0.1949 | 0.1181 | 0.2183 |
+| history | 0.0654 | 0.0873 | 0.0614 | 0.1015 |
+| hsm | 0.1736 | 0.2489 | 0.1729 | 0.2140 |
+| iota | 0.1563 | 0.3309 | 0.1403 | 0.4195 |
+| law | 0.0946 | 0.0574 | 0.0854 | 0.0549 |
+| monero | 0.0382 | 0.0320 | 0.0622 | 0.0113 |
+| politics | 0.2810 | 0.2625 | 0.2403 | 0.2371 |
+| quant | 0.0255 | 0.0237 | 0.0085 | 0.0403 |
+| travel | 0.0506 | 0.0442 | 0.0423 | 0.0645 |
+| workplace | 0.0798 | 0.0230 | 0.1162 | 0.0297 |
 
 ### Track 2 · RECOR
 

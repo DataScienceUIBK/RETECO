@@ -14,7 +14,7 @@ and **what the conversation has already established**.
 [![Website](https://img.shields.io/badge/Website-Live-1f6feb?style=for-the-badge)](https://datascienceuibk.github.io/RETECO/)
 
 ![Domains](https://img.shields.io/badge/domains-24-informational?style=flat-square)
-![Documents](https://img.shields.io/badge/documents-2.16M-informational?style=flat-square)
+![Documents](https://img.shields.io/badge/documents-1.67M-informational?style=flat-square)
 ![Split](https://img.shields.io/badge/train%2Fdev-70%2F30-informational?style=flat-square)
 ![Language](https://img.shields.io/badge/language-English-informational?style=flat-square)
 ![Text licence](https://img.shields.io/badge/text-CC%20BY--SA%204.0-brightgreen?style=flat-square)
@@ -38,6 +38,7 @@ and **what the conversation has already established**.
 
 | Date | | Update |
 | :--- | :---: | :--- |
+| **25 Sep 2026** | 🧹 | **Data v1.1: duplicate documents removed from Track 1.** Texts stored several times under different IDs are now kept once (1,654,055 → 1,167,159 Track 1 documents). Gold labels are preserved; queries, splits and Track 2 are unchanged. Please re-download the data and rebuild your indexes — [what changed](https://datascienceuibk.github.io/RETECO/data.html#versions). |
 | **30 Aug 2026** | 🚀 | **Training and development data released.** All 24 domains, 2.16M documents, 70/30 train/dev splits with gold judgments for both — [get it on Hugging Face](https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027). |
 | **30 Aug 2026** | 🧰 | **Starter kit published.** BM25 baselines, the official `pytrec_eval` scorer, a submission format checker, and the deterministic build script — [`starter_kit/`](starter_kit/). |
 | **30 Aug 2026** | 🧪 | **Reference baselines** for every retrieval sub-track on both splits — [`BASELINE_RESULTS.md`](starter_kit/BASELINE_RESULTS.md). |
@@ -54,7 +55,7 @@ and **what the conversation has already established**.
 ## ⚡ Quick start
 
 ```bash
-# 1 — get the data (~4.5 GB; everything you need, in one download)
+# 1 — get the data (v1.1, ~3.2 GB; everything you need, in one download)
 pip install huggingface_hub
 hf download DataScience-UIBK/RETECO-SemEval2027 --repo-type dataset --local-dir reteco_data
 
@@ -111,7 +112,8 @@ the SemEval test set is separate and never released.
 ### 🧰 Starter kit
 
 [`starter_kit/`](starter_kit/) has the baselines, scorer, format checker, and the
-build script that produces the release from pinned upstream revisions.
+build script that produces the release from pinned upstream revisions, plus the
+deduplication script behind data v1.1 and its verifier.
 
 ```bash
 cd starter_kit && pip install -r requirements.txt
@@ -122,12 +124,12 @@ Reference BM25, nDCG@10, macro-averaged over domains:
 
 | Sub-track | Query given to the retriever | train | dev |
 | --- | --- | ---: | ---: |
-| 1a Temporal retrieval | Whole query | 0.0879 | 0.0967 |
-| 1b Step-wise retrieval | Query + step instruction | 0.0852 | 0.1063 |
+| 1a Temporal retrieval | Whole query | 0.1075 | 0.1147 |
+| 1b Step-wise retrieval | Query + step instruction | 0.1024 | 0.1177 |
 | 2a Conversational retrieval | Current turn only | 0.1837 | 0.1827 |
 | 2a Conversational retrieval | Turn + conversation history | 0.4539 | 0.4379 |
 
-Per-domain numbers: [`starter_kit/BASELINE_RESULTS.md`](starter_kit/BASELINE_RESULTS.md).
+Track 1 numbers are on data v1.1. Per-domain numbers: [`starter_kit/BASELINE_RESULTS.md`](starter_kit/BASELINE_RESULTS.md).
 
 ## 🔍 Sample data
 
@@ -154,24 +156,25 @@ alone.
 
 [TEMPO](https://github.com/tempo-bench/Tempo) contains 1,730 complex temporal
 queries, 3,976 decomposed retrieval steps, and 1,654,055 documents across 13
-independent domain corpora.
+independent domain corpora. RETECO v1.1 keeps one copy of each duplicated text,
+leaving 1,167,159 documents.
 
-| Group | Domain | Queries | Corpus documents |
-| --- | --- | ---: | ---: |
-| Blockchain | Bitcoin | 100 | 153,291 |
-| Blockchain | Cardano | 51 | 87,201 |
-| Blockchain | IOTA | 10 | 10,372 |
-| Blockchain | Monero | 65 | 85,093 |
-| Social Sciences | Economics | 83 | 93,756 |
-| Social Sciences | Law | 35 | 43,288 |
-| Social Sciences | Politics | 150 | 183,394 |
-| Social Sciences | History | 801 | 356,493 |
-| Applied | Quantitative Finance | 34 | 28,785 |
-| Applied | Travel | 100 | 177,677 |
-| Applied | Workplace | 36 | 64,659 |
-| Applied | Genealogy | 115 | 156,228 |
-| STEM | History of Science and Mathematics | 150 | 213,818 |
-| **Total** | **13 domains** | **1,730** | **1,654,055** |
+| Group | Domain | Queries | Corpus documents (TEMPO) | RETECO v1.1 |
+| --- | --- | ---: | ---: | ---: |
+| Blockchain | Bitcoin | 100 | 153,291 | 76,706 |
+| Blockchain | Cardano | 51 | 87,201 | 47,509 |
+| Blockchain | IOTA | 10 | 10,372 | 9,680 |
+| Blockchain | Monero | 65 | 85,093 | 53,955 |
+| Social Sciences | Economics | 83 | 93,756 | 74,692 |
+| Social Sciences | Law | 35 | 43,288 | 36,110 |
+| Social Sciences | Politics | 150 | 183,394 | 135,207 |
+| Social Sciences | History | 801 | 356,493 | 200,252 |
+| Applied | Quantitative Finance | 34 | 28,785 | 25,040 |
+| Applied | Travel | 100 | 177,677 | 158,771 |
+| Applied | Workplace | 36 | 64,659 | 43,584 |
+| Applied | Genealogy | 115 | 156,228 | 136,101 |
+| STEM | History of Science and Mathematics | 150 | 213,818 | 169,552 |
+| **Total** | **13 domains** | **1,730** | **1,654,055** | **1,167,159** |
 
 - Dataset: [tempo26/Tempo on Hugging Face](https://huggingface.co/datasets/tempo26/Tempo)
 - Code and baselines: [tempo-bench/Tempo](https://github.com/tempo-bench/Tempo)
