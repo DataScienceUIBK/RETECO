@@ -453,6 +453,9 @@ p { margin-top: 0; }
 .sidebar-note { margin-top: 14px; }
 .sidebar-links { margin: 0; padding-left: 1.1rem; }
 .sidebar-links li { margin-bottom: 7px; }
+.sidebar-register p { margin-bottom: 12px; }
+.academic-sidebar a.sidebar-button { display: flex; width: 100%; background: #087397; color: #fff; }
+.academic-sidebar a.sidebar-button:hover { background: #066283; }
 .academic-footer { padding: 34px 0; border-top: 1px solid #dce2e7; background: #f5f7f8; }
 .academic-footer p { margin: 5px 0; color: #5c6a79; font-size: .79rem; }
 .academic-footer strong { color: #213b52; }
