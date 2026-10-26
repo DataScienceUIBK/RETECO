@@ -55,7 +55,16 @@
         <section id="news">
           <h2>News</h2>
           <dl class="news-list news-list--animated">
-            <dt><svg class="news-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.3 4.2 2.6 17.5a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4"/><path d="M12 17h.01"/></svg><time datetime="2026-10-17">17 October 2026</time><span class="news-tag">New</span></dt>
+            <dt><svg class="news-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5"/><path d="M12 13v8"/></svg><time datetime="2026-10-26">26 October 2026</time><span class="news-tag">New</span></dt>
+            <dd><strong>RETECO is now in Pyserini.</strong> Pyserini provides prebuilt Lucene indexes for all
+              13 Track 1 domains of data v1.1, with ready-to-run BM25 and BM25QS baselines for Sub-track 1a.
+              Topics, qrels and indexes download automatically, so you can start retrieving without building
+              an index yourself. See the
+              <a href="https://github.com/castorini/pyserini/blob/master/docs/experiments-reteco-v1.1.md">Pyserini RETECO guide</a>.
+              The <a href="https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit">starter kit</a>
+              remains the reference baseline. Thanks to Tz-Huan Hsu and Jimmy Lin (University of Waterloo)
+              for the contribution.</dd>
+            <dt><svg class="news-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.3 4.2 2.6 17.5a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4"/><path d="M12 17h.01"/></svg><time datetime="2026-10-17">17 October 2026</time></dt>
             <dd><strong>Document IDs are not a signal.</strong> Several participants noticed that in the
               training and development data, gold and non-gold document IDs often follow different
               naming patterns, inherited from the source benchmarks. Do not use document IDs as a
